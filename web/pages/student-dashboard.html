@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard - LearnHub</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            Learn<span>Hub</span>
+        </div>
+
+        <div class="student-mini">
+            <div class="avatar">D</div>
+
+            <div>
+                <strong>Dhoni</strong>
+                <small>Student</small>
+            </div>
+        </div>
+
+        <nav class="side-nav">
+
+            <a href="#" class="active">
+                <span>▦</span>
+                Overview
+            </a>
+
+            <a href="#">
+                <span>📚</span>
+                My Courses
+            </a>
+
+            <a href="#">
+                <span>🔍</span>
+                Browse Courses
+            </a>
+
+            <a href="#">
+                <span>📄</span>
+                Materials
+            </a>
+
+            <a href="#">
+                <span>📝</span>
+                Assignments
+            </a>
+
+            <a href="#">
+                <span>📈</span>
+                My Progress
+            </a>
+
+            <a href="#">
+                <span>🎯</span>
+                Grades & Feedback
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#">
+                <span>⚙️</span>
+                Settings
+            </a>
+
+            <a href="../login.html" class="logout">
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+                <p class="page-label">STUDENT DASHBOARD</p>
+                <h2>Overview</h2>
+            </div>
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="avatar small">D</div>
+
+                    <div>
+                        <strong>Dhoni</strong>
+                        <small>Student</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome-card">
+
+            <div>
+
+                <p>Good evening, Dhoni 👋</p>
+
+                <h1>
+                    Keep learning,<br>
+                    keep growing.
+                </h1>
+
+                <span>
+                    You are making great progress in your courses.
+                </span>
+
+            </div>
+
+            <div class="welcome-icon">
+                🎓
+            </div>
+
+        </section>
+
+
+        <!-- STAT CARDS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    📚
+                </div>
+
+                <div>
+                    <span>My Courses</span>
+                    <h3>4</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    📝
+                </div>
+
+                <div>
+                    <span>Pending Assignments</span>
+                    <h3>3</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <div>
+                    <span>Completed</span>
+                    <h3>12</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    📈
+                </div>
+
+                <div>
+                    <span>Average Progress</span>
+                    <h3>72%</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT GRID -->
+
+        <section class="content-grid">
+
+
+            <!-- CONTINUE LEARNING -->
+
+            <div class="panel continue-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="section-label">
+                            KEEP LEARNING
+                        </span>
+
+                        <h3>Continue Learning</h3>
+                    </div>
+
+                    <a href="#">
+                        View All →
+                    </a>
+
+                </div>
+
+
+                <div class="learning-course">
+
+                    <div class="course-logo java-logo">
+                        ☕
+                    </div>
+
+                    <div class="course-info">
+
+                        <div class="course-title">
+
+                            <div>
+                                <h4>Java Programming</h4>
+                                <p>Instructor: John</p>
+                            </div>
+
+                            <strong>75%</strong>
+
+                        </div>
+
+                        <div class="progress">
+                            <div style="width: 75%;"></div>
+                        </div>
+
+                        <button>
+                            Continue Learning →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="learning-course">
+
+                    <div class="course-logo dbms-logo">
+                        🗄️
+                    </div>
+
+                    <div class="course-info">
+
+                        <div class="course-title">
+
+                            <div>
+                                <h4>Database Management</h4>
+                                <p>Instructor: Alex</p>
+                            </div>
+
+                            <strong>55%</strong>
+
+                        </div>
+
+                        <div class="progress">
+                            <div style="width: 55%;"></div>
+                        </div>
+
+                        <button>
+                            Continue Learning →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DEADLINES -->
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="section-label">
+                            UPCOMING
+                        </span>
+
+                        <h3>Deadlines</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="deadline">
+
+                    <div class="date">
+                        <strong>18</strong>
+                        <span>SEP</span>
+                    </div>
+
+                    <div>
+                        <h4>Java OOP Assignment</h4>
+                        <p>Java Programming</p>
+                    </div>
+
+                    <span class="urgent">
+                        2 days
+                    </span>
+
+                </div>
+
+
+                <div class="deadline">
+
+                    <div class="date">
+                        <strong>21</strong>
+                        <span>SEP</span>
+                    </div>
+
+                    <div>
+                        <h4>SQL Queries</h4>
+                        <p>Database Management</p>
+                    </div>
+
+                    <span class="normal">
+                        5 days
+                    </span>
+
+                </div>
+
+
+                <div class="deadline">
+
+                    <div class="date">
+                        <strong>25</strong>
+                        <span>SEP</span>
+                    </div>
+
+                    <div>
+                        <h4>Web Development Quiz</h4>
+                        <p>Web Development</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM -->
+
+        <section class="bottom-grid">
+
+
+            <!-- RECENT ASSIGNMENTS -->
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="section-label">
+                            ASSIGNMENTS
+                        </span>
+
+                        <h3>Recent Assignments</h3>
+                    </div>
+
+                    <a href="#">
+                        View All →
+                    </a>
+
+                </div>
+
+
+                <div class="assignment-table">
+
+                    <div class="table-header">
+                        <span>Assignment</span>
+                        <span>Course</span>
+                        <span>Status</span>
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <div>
+                            <strong>Java OOP</strong>
+                            <small>Submitted Sep 15</small>
+                        </div>
+
+                        <span>Java</span>
+
+                        <span class="status submitted">
+                            Submitted
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <div>
+                            <strong>SQL Queries</strong>
+                            <small>Due Sep 21</small>
+                        </div>
+
+                        <span>DBMS</span>
+
+                        <span class="status pending">
+                            Pending
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <div>
+                            <strong>HTML Project</strong>
+                            <small>Submitted Sep 12</small>
+                        </div>
+
+                        <span>Web</span>
+
+                        <span class="status graded">
+                            Graded
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="panel progress-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="section-label">
+                            PERFORMANCE
+                        </span>
+
+                        <h3>My Progress</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="circle-progress">
+
+                    <div class="circle">
+                        <strong>72%</strong>
+                        <span>Overall</span>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <span>Java Programming</span>
+
+                    <strong>75%</strong>
+
+                </div>
+
+                <div class="mini-progress">
+                    <div style="width: 75%;"></div>
+                </div>
+
+
+                <div class="progress-item">
+
+                    <span>Database Management</span>
+
+                    <strong>55%</strong>
+
+                </div>
+
+                <div class="mini-progress">
+                    <div style="width: 55%;"></div>
+                </div>
+
+
+                <div class="progress-item">
+
+                    <span>Web Development</span>
+
+                    <strong>85%</strong>
+
+                </div>
+
+                <div class="mini-progress">
+                    <div style="width: 85%;"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

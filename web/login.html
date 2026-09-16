@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - LearnHub LMS</title>
+
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="login-left">
+
+        <div class="brand">
+            Learn<span>Hub</span>
+        </div>
+
+        <div class="welcome">
+
+            <p class="small-title">
+                WELCOME BACK
+            </p>
+
+            <h1>
+                Continue your<br>
+                <span>learning journey.</span>
+            </h1>
+
+            <p>
+                Login to access your courses,
+                assignments, learning materials
+                and progress.
+            </p>
+
+        </div>
+
+        <div class="login-features">
+
+            <div>
+                <span>✓</span>
+                Access your courses
+            </div>
+
+            <div>
+                <span>✓</span>
+                Track your progress
+            </div>
+
+            <div>
+                <span>✓</span>
+                Manage assignments
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="login-right">
+
+        <div class="login-box">
+
+            <div class="login-heading">
+
+                <h2>
+                    Welcome Back 👋
+                </h2>
+
+                <p>
+                    Login to your LearnHub account
+                </p>
+
+            </div>
+
+
+            <form id="loginForm">
+
+                <!-- ROLE -->
+
+                <div class="role-selection">
+
+                    <label>
+                        Login As
+                    </label>
+
+                    <div class="role-options">
+
+                        <label class="role-card">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="STUDENT"
+                                checked
+                            >
+
+                            <span class="role-icon">
+                                🎓
+                            </span>
+
+                            <span class="role-name">
+                                Student
+                            </span>
+
+                        </label>
+
+
+                        <label class="role-card">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="INSTRUCTOR"
+                            >
+
+                            <span class="role-icon">
+                                👨‍🏫
+                            </span>
+
+                            <span class="role-name">
+                                Instructor
+                            </span>
+
+                        </label>
+
+
+                        <label class="role-card">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="ADMIN"
+                            >
+
+                            <span class="role-icon">
+                                🛡️
+                            </span>
+
+                            <span class="role-name">
+                                Admin
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <div class="password-label">
+
+                        <label>
+                            Password
+                        </label>
+
+                        <a href="#">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- REMEMBER -->
+
+                <div class="remember">
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Remember me
+
+                    </label>
+
+                </div>
+
+
+                <!-- LOGIN -->
+
+                <button
+                    type="submit"
+                    class="login-submit"
+                >
+                    Login →
+                </button>
+
+            </form>
+
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+
+            <!-- DEMO ACCOUNTS -->
+
+            <p class="demo-text">
+                Demo Accounts
+            </p>
+
+            <div class="demo-accounts">
+
+                <div class="demo">
+
+                    <strong>
+                        Admin
+                    </strong>
+
+                    <span>
+                        admin@lms.com
+                    </span>
+
+                </div>
+
+
+                <div class="demo">
+
+                    <strong>
+                        Instructor
+                    </strong>
+
+                    <span>
+                        john@lms.com
+                    </span>
+
+                </div>
+
+
+                <div class="demo">
+
+                    <strong>
+                        Student
+                    </strong>
+
+                    <span>
+                        dhoni@lms.com
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="back-home">
+
+                ←
+                <a href="index.html">
+                    Back to Home
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - LearnHub</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <style>
+
+        /* ADMIN SPECIFIC */
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .admin-btn {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: #4f46e5;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .admin-btn.secondary {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .user-row {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 100px 80px;
+
+            align-items: center;
+            gap: 12px;
+
+            padding: 13px 0;
+
+            border-top: 1px solid #e5e7eb;
+
+            font-size: 11px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 34px;
+            height: 34px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: #eef2ff;
+            color: #4f46e5;
+
+            font-weight: bold;
+        }
+
+        .user-info strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .user-info small {
+            display: block;
+            color: #94a3b8;
+            margin-top: 3px;
+        }
+
+        .role-badge {
+            padding: 6px 9px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .role-admin {
+            background: #ede9fe;
+            color: #6d28d9;
+        }
+
+        .role-instructor {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .role-student {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .online {
+            color: #16a34a;
+            font-size: 10px;
+        }
+
+        .course-admin-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .course-admin-row:last-child {
+            border-bottom: none;
+        }
+
+        .course-admin-info {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .course-admin-icon {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 8px;
+
+            background: #eef2ff;
+
+            font-size: 20px;
+        }
+
+        .course-admin-info h4 {
+            font-size: 12px;
+        }
+
+        .course-admin-info p {
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .course-count {
+            text-align: right;
+        }
+
+        .course-count strong {
+            display: block;
+            font-size: 15px;
+        }
+
+        .course-count span {
+            font-size: 9px;
+            color: #94a3b8;
+        }
+
+        .activity {
+            display: flex;
+            gap: 12px;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .activity:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 8px;
+
+            background: #eef2ff;
+        }
+
+        .activity h4 {
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .activity p {
+            font-size: 9px;
+            color: #94a3b8;
+        }
+
+        .system-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .system-item:last-child {
+            border-bottom: none;
+        }
+
+        .system-item h4 {
+            font-size: 12px;
+        }
+
+        .system-item p {
+            font-size: 9px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .toggle {
+            width: 38px;
+            height: 20px;
+
+            border-radius: 20px;
+
+            background: #4f46e5;
+
+            position: relative;
+        }
+
+        .toggle::after {
+            content: "";
+
+            width: 16px;
+            height: 16px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            position: absolute;
+
+            right: 2px;
+            top: 2px;
+        }
+
+        @media (max-width: 900px) {
+
+            .user-row {
+                grid-template-columns: 1.5fr 1fr 90px;
+            }
+
+            .user-row span:last-child {
+                display: none;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .admin-actions {
+                display: none;
+            }
+
+            .user-row {
+                grid-template-columns: 1fr 80px;
+            }
+
+            .user-row > span:nth-child(2) {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            Learn<span>Hub</span>
+        </div>
+
+
+        <div class="student-mini">
+
+            <div class="avatar">
+                A
+            </div>
+
+            <div>
+                <strong>Admin</strong>
+                <small>Administrator</small>
+            </div>
+
+        </div>
+
+
+        <nav class="side-nav">
+
+            <a href="#" class="active">
+                <span>▦</span>
+                Overview
+            </a>
+
+            <a href="#">
+                <span>👥</span>
+                User Management
+            </a>
+
+            <a href="#">
+                <span>📚</span>
+                Course Management
+            </a>
+
+            <a href="#">
+                <span>📊</span>
+                Analytics
+            </a>
+
+            <a href="#">
+                <span>🔴</span>
+                Activity Monitoring
+            </a>
+
+            <a href="#">
+                <span>⚙️</span>
+                System Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="#">
+                <span>👤</span>
+                Profile
+            </a>
+
+            <a href="../login.html" class="logout">
+                <span>↪</span>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    ADMIN DASHBOARD
+                </p>
+
+                <h2>
+                    Overview
+                </h2>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="avatar small">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome-card">
+
+            <div>
+
+                <p>
+                    System Overview 👋
+                </p>
+
+                <h1>
+                    Manage your<br>
+                    learning platform.
+                </h1>
+
+                <span>
+                    Monitor users, courses and platform activity.
+                </span>
+
+            </div>
+
+            <div class="welcome-icon">
+                🛡️
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    👥
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Users
+                    </span>
+
+                    <h3>
+                        248
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    📚
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Courses
+                    </span>
+
+                    <h3>
+                        18
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    👨‍🏫
+                </div>
+
+                <div>
+
+                    <span>
+                        Instructors
+                    </span>
+
+                    <h3>
+                        24
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    🎓
+                </div>
+
+                <div>
+
+                    <span>
+                        Students
+                    </span>
+
+                    <h3>
+                        223
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- USERS + ACTIVITY -->
+
+        <section class="content-grid">
+
+
+            <!-- USERS -->
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            USER MANAGEMENT
+                        </span>
+
+                        <h3>
+                            Recent Users
+                        </h3>
+
+                    </div>
+
+
+                    <div class="admin-actions">
+
+                        <button class="admin-btn">
+                            + Add User
+                        </button>
+
+                        <button class="admin-btn secondary">
+                            View All
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="user-row"
+                     style="border-top:none; color:#94a3b8; font-size:10px;">
+
+                    <span>
+                        USER
+                    </span>
+
+                    <span>
+                        ROLE
+                    </span>
+
+                    <span>
+                        STATUS
+                    </span>
+
+                    <span>
+                        ACTION
+                    </span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar">
+                            D
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Dhoni
+                            </strong>
+
+                            <small>
+                                dhoni@lms.com
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <span class="role-badge role-student">
+                        STUDENT
+                    </span>
+
+                    <span class="online">
+                        ● Online
+                    </span>
+
+                    <span>
+                        ⋮
+                    </span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar">
+                            J
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                John
+                            </strong>
+
+                            <small>
+                                john@lms.com
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <span class="role-badge role-instructor">
+                        INSTRUCTOR
+                    </span>
+
+                    <span class="online">
+                        ● Online
+                    </span>
+
+                    <span>
+                        ⋮
+                    </span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-info">
+
+                        <div class="user-avatar">
+                            R
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Rahul
+                            </strong>
+
+                            <small>
+                                rahul@lms.com
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <span class="role-badge role-student">
+                        STUDENT
+                    </span>
+
+                    <span>
+                        ● Offline
+                    </span>
+
+                    <span>
+                        ⋮
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIVITY -->
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            MONITORING
+                        </span>
+
+                        <h3>
+                            Recent Activity
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            New student registered
+                        </h4>
+
+                        <p>
+                            Rahul joined the platform • 10 min ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            New course created
+                        </h4>
+
+                        <p>
+                            Web Development • 1 hour ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        📤
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Material uploaded
+                        </h4>
+
+                        <p>
+                            Java Programming • 2 hours ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity">
+
+                    <div class="activity-icon">
+                        📝
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Assignment submitted
+                        </h4>
+
+                        <p>
+                            Java OOP • 3 hours ago
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COURSE MANAGEMENT -->
+
+        <section class="bottom-grid">
+
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            COURSE MANAGEMENT
+                        </span>
+
+                        <h3>
+                            Popular Courses
+                        </h3>
+
+                    </div>
+
+                    <a href="#">
+                        View All →
+                    </a>
+
+                </div>
+
+
+                <div class="course-admin-row">
+
+                    <div class="course-admin-info">
+
+                        <div class="course-admin-icon">
+                            ☕
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Java Programming
+                            </h4>
+
+                            <p>
+                                Instructor: John
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-count">
+
+                        <strong>
+                            45
+                        </strong>
+
+                        <span>
+                            Students
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="course-admin-row">
+
+                    <div class="course-admin-info">
+
+                        <div class="course-admin-icon">
+                            🗄️
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Database Management
+                            </h4>
+
+                            <p>
+                                Instructor: Alex
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-count">
+
+                        <strong>
+                            52
+                        </strong>
+
+                        <span>
+                            Students
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="course-admin-row">
+
+                    <div class="course-admin-info">
+
+                        <div class="course-admin-icon">
+                            🌐
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Web Development
+                            </h4>
+
+                            <p>
+                                Instructor: Sarah
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="course-count">
+
+                        <strong>
+                            38
+                        </strong>
+
+                        <span>
+                            Students
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SYSTEM SETTINGS -->
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SYSTEM
+                        </span>
+
+                        <h3>
+                            System Settings
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <div>
+
+                        <h4>
+                            User Registration
+                        </h4>
+
+                        <p>
+                            Allow new users to register
+                        </p>
+
+                    </div>
+
+                    <div class="toggle"></div>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <div>
+
+                        <h4>
+                            Course Creation
+                        </h4>
+
+                        <p>
+                            Allow instructors to create courses
+                        </p>
+
+                    </div>
+
+                    <div class="toggle"></div>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <div>
+
+                        <h4>
+                            Email Notifications
+                        </h4>
+
+                        <p>
+                            Send platform notifications
+                        </p>
+
+                    </div>
+
+                    <div class="toggle"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ANALYTICS -->
+
+        <section class="panel" style="margin-top:20px;">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        ANALYTICS
+                    </span>
+
+                    <h3>
+                        Platform Overview
+                    </h3>
+
+                </div>
+
+                <select style="
+                    border:1px solid #e5e7eb;
+                    padding:8px 12px;
+                    border-radius:7px;
+                    color:#64748b;
+                    font-size:11px;
+                ">
+
+                    <option>
+                        Last 7 Days
+                    </option>
+
+                    <option>
+                        Last 30 Days
+                    </option>
+
+                    <option>
+                        This Year
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div style="
+                display:grid;
+                grid-template-columns:repeat(3,1fr);
+                gap:20px;
+            ">
+
+                <div style="
+                    padding:20px;
+                    background:#f8fafc;
+                    border-radius:10px;
+                ">
+
+                    <span style="
+                        color:#64748b;
+                        font-size:11px;
+                    ">
+                        ENROLLMENTS
+                    </span>
+
+                    <h2 style="
+                        margin-top:8px;
+                        color:#4f46e5;
+                    ">
+                        156
+                    </h2>
+
+                    <p style="
+                        color:#16a34a;
+                        font-size:10px;
+                        margin-top:5px;
+                    ">
+                        ↑ 12% this month
+                    </p>
+
+                </div>
+
+
+                <div style="
+                    padding:20px;
+                    background:#f8fafc;
+                    border-radius:10px;
+                ">
+
+                    <span style="
+                        color:#64748b;
+                        font-size:11px;
+                    ">
+                        COMPLETION RATE
+                    </span>
+
+                    <h2 style="
+                        margin-top:8px;
+                        color:#4f46e5;
+                    ">
+                        74%
+                    </h2>
+
+                    <p style="
+                        color:#16a34a;
+                        font-size:10px;
+                        margin-top:5px;
+                    ">
+                        ↑ 5% this month
+                    </p>
+
+                </div>
+
+
+                <div style="
+                    padding:20px;
+                    background:#f8fafc;
+                    border-radius:10px;
+                ">
+
+                    <span style="
+                        color:#64748b;
+                        font-size:11px;
+                    ">
+                        ACTIVE USERS
+                    </span>
+
+                    <h2 style="
+                        margin-top:8px;
+                        color:#4f46e5;
+                    ">
+                        189
+                    </h2>
+
+                    <p style="
+                        color:#16a34a;
+                        font-size:10px;
+                        margin-top:5px;
+                    ">
+                        ↑ 8% this month
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
