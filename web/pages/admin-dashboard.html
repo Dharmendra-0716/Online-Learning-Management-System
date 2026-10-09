@@ -1,1199 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Admin Dashboard - LearnHub</title>
-
     <link rel="stylesheet" href="../css/dashboard.css">
-
     <style>
-
-        /* ADMIN SPECIFIC */
-
-        .admin-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .admin-btn {
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            background: #4f46e5;
-            color: white;
-            font-size: 11px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .admin-btn.secondary {
-            background: #eef2ff;
-            color: #4f46e5;
-        }
-
-        .user-row {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 100px 80px;
-
-            align-items: center;
-            gap: 12px;
-
-            padding: 13px 0;
-
-            border-top: 1px solid #e5e7eb;
-
-            font-size: 11px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-avatar {
-            width: 34px;
-            height: 34px;
-
-            display: grid;
-            place-items: center;
-
-            border-radius: 50%;
-
-            background: #eef2ff;
-            color: #4f46e5;
-
-            font-weight: bold;
-        }
-
-        .user-info strong {
-            display: block;
-            font-size: 12px;
-        }
-
-        .user-info small {
-            display: block;
-            color: #94a3b8;
-            margin-top: 3px;
-        }
-
-        .role-badge {
-            padding: 6px 9px;
-            border-radius: 20px;
-            text-align: center;
-            font-size: 9px;
-            font-weight: bold;
-        }
-
-        .role-admin {
-            background: #ede9fe;
-            color: #6d28d9;
-        }
-
-        .role-instructor {
-            background: #dbeafe;
-            color: #1d4ed8;
-        }
-
-        .role-student {
-            background: #dcfce7;
-            color: #15803d;
-        }
-
-        .online {
-            color: #16a34a;
-            font-size: 10px;
-        }
-
-        .course-admin-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 14px 0;
-
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .course-admin-row:last-child {
-            border-bottom: none;
-        }
-
-        .course-admin-info {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .course-admin-icon {
-            width: 42px;
-            height: 42px;
-
-            display: grid;
-            place-items: center;
-
-            border-radius: 8px;
-
-            background: #eef2ff;
-
-            font-size: 20px;
-        }
-
-        .course-admin-info h4 {
-            font-size: 12px;
-        }
-
-        .course-admin-info p {
-            font-size: 10px;
-            color: #94a3b8;
-            margin-top: 4px;
-        }
-
-        .course-count {
-            text-align: right;
-        }
-
-        .course-count strong {
-            display: block;
-            font-size: 15px;
-        }
-
-        .course-count span {
-            font-size: 9px;
-            color: #94a3b8;
-        }
-
-        .activity {
-            display: flex;
-            gap: 12px;
-
-            padding: 13px 0;
-
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .activity:last-child {
-            border-bottom: none;
-        }
-
-        .activity-icon {
-            width: 36px;
-            height: 36px;
-
-            display: grid;
-            place-items: center;
-
-            border-radius: 8px;
-
-            background: #eef2ff;
-        }
-
-        .activity h4 {
-            font-size: 11px;
-            margin-bottom: 4px;
-        }
-
-        .activity p {
-            font-size: 9px;
-            color: #94a3b8;
-        }
-
-        .system-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 15px 0;
-
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .system-item:last-child {
-            border-bottom: none;
-        }
-
-        .system-item h4 {
-            font-size: 12px;
-        }
-
-        .system-item p {
-            font-size: 9px;
-            color: #94a3b8;
-            margin-top: 4px;
-        }
-
-        .toggle {
-            width: 38px;
-            height: 20px;
-
-            border-radius: 20px;
-
-            background: #4f46e5;
-
-            position: relative;
-        }
-
-        .toggle::after {
-            content: "";
-
-            width: 16px;
-            height: 16px;
-
-            background: white;
-
-            border-radius: 50%;
-
-            position: absolute;
-
-            right: 2px;
-            top: 2px;
-        }
-
-        @media (max-width: 900px) {
-
-            .user-row {
-                grid-template-columns: 1.5fr 1fr 90px;
-            }
-
-            .user-row span:last-child {
-                display: none;
-            }
-
-        }
-
-        @media (max-width: 600px) {
-
-            .admin-actions {
-                display: none;
-            }
-
-            .user-row {
-                grid-template-columns: 1fr 80px;
-            }
-
-            .user-row > span:nth-child(2) {
-                display: none;
-            }
-
-        }
-
+        .admin-btn{border:none;padding:9px 13px;border-radius:8px;background:#4f46e5;color:#fff;font-size:11px;font-weight:700;cursor:pointer}
+        .admin-btn.secondary{background:#eef2ff;color:#4f46e5}
+        .admin-btn.danger{background:#fee2e2;color:#b91c1c}
+        .admin-btn:disabled{opacity:.55;cursor:not-allowed}
+        .admin-actions{display:flex;gap:8px;flex-wrap:wrap}
+        .admin-table-wrap{overflow:auto}
+        .admin-table{width:100%;border-collapse:collapse;font-size:11px}
+        .admin-table th{text-align:left;color:#94a3b8;font-size:9px;padding:10px;border-bottom:1px solid #e5e7eb}
+        .admin-table td{padding:12px 10px;border-bottom:1px solid #eef2f7;vertical-align:middle}
+        .admin-table tr:last-child td{border-bottom:none}
+        .role-badge,.status-badge{display:inline-block;padding:5px 8px;border-radius:20px;font-size:8px;font-weight:800}
+        .role-admin{background:#ede9fe;color:#6d28d9}.role-instructor{background:#dbeafe;color:#1d4ed8}.role-student{background:#dcfce7;color:#15803d}
+        .status-on{background:#dcfce7;color:#15803d}.status-off{background:#f1f5f9;color:#64748b}
+        .small-muted{font-size:9px;color:#94a3b8}
+        .admin-search{width:100%;border:1px solid #e5e7eb;border-radius:8px;padding:9px 11px;font-size:11px;outline:none}
+        .admin-search:focus{border-color:#818cf8}
+        .admin-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .admin-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .admin-stat{padding:18px;border-radius:10px;background:#f8fafc}
+        .admin-stat span{display:block;color:#64748b;font-size:10px}.admin-stat strong{display:block;font-size:24px;margin-top:6px;color:#4f46e5}
+        .admin-stat small{display:block;color:#94a3b8;font-size:9px;margin-top:4px}
+        .admin-course-card{padding:15px;border:1px solid #eef2f7;border-radius:10px;margin-bottom:10px}
+        .admin-course-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+        .admin-course-head h4{font-size:12px}.admin-course-head p{font-size:9px;color:#94a3b8;margin-top:4px}
+        .activity{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e5e7eb}.activity:last-child{border-bottom:none}
+        .activity-icon{width:34px;height:34px;border-radius:8px;background:#eef2ff;display:grid;place-items:center;flex:none}
+        .activity h4{font-size:10px;margin-bottom:4px}.activity p{font-size:9px;color:#94a3b8}
+        .system-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #e5e7eb}
+        .system-item:last-child{border-bottom:none}.system-item h4{font-size:11px}.system-item p{font-size:9px;color:#94a3b8;margin-top:4px}
+        .switch{width:40px;height:22px;border:0;border-radius:20px;background:#cbd5e1;position:relative;cursor:pointer}
+        .switch::after{content:"";position:absolute;width:18px;height:18px;top:2px;left:2px;background:#fff;border-radius:50%;transition:.2s}
+        .switch.on{background:#4f46e5}.switch.on::after{left:20px}
+        .modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+        .modal-backdrop.show{display:flex}.admin-modal{background:#fff;width:min(520px,100%);border-radius:14px;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+        .admin-modal h3{font-size:16px;margin-bottom:16px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .form-group{margin-bottom:12px}.form-group label{display:block;font-size:10px;font-weight:700;color:#475569;margin-bottom:5px}
+        .form-group input,.form-group select,.form-group textarea{width:100%;border:1px solid #e5e7eb;border-radius:8px;padding:9px;font-size:11px;box-sizing:border-box}
+        .form-group textarea{min-height:90px;resize:vertical}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}
+        .toast{position:fixed;right:20px;bottom:20px;background:#0f172a;color:#fff;padding:11px 15px;border-radius:9px;font-size:11px;display:none;z-index:1200}
+        .toast.show{display:block}.empty-state{padding:25px;text-align:center;color:#94a3b8;font-size:11px}
+        .nav-link{cursor:pointer}
+        @media(max-width:900px){.admin-grid-2,.admin-grid-3{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
     </style>
-
 </head>
-
 <body>
-
 <div class="dashboard">
-
-    <!-- SIDEBAR -->
-
     <aside class="sidebar">
-
-        <div class="brand">
-            Learn<span>Hub</span>
-        </div>
-
-
+        <div class="brand">Learn<span>Hub</span></div>
         <div class="student-mini">
-
-            <div class="avatar">
-                A
-            </div>
-
-            <div>
-                <strong>Admin</strong>
-                <small>Administrator</small>
-            </div>
-
+            <div class="avatar" id="adminAvatar">A</div>
+            <div><strong id="adminSideName">Admin</strong><small>Administrator</small></div>
         </div>
-
-
         <nav class="side-nav">
-
-            <a href="#" class="active">
-                <span>▦</span>
-                Overview
-            </a>
-
-            <a href="#">
-                <span>👥</span>
-                User Management
-            </a>
-
-            <a href="#">
-                <span>📚</span>
-                Course Management
-            </a>
-
-            <a href="#">
-                <span>📊</span>
-                Analytics
-            </a>
-
-            <a href="#">
-                <span>🔴</span>
-                Activity Monitoring
-            </a>
-
-            <a href="#">
-                <span>⚙️</span>
-                System Settings
-            </a>
-
+            <a href="#overviewSection" class="active nav-link"><span>▦</span>Overview</a>
+            <a href="#usersSection" class="nav-link"><span>👥</span>User Management</a>
+            <a href="#coursesSection" class="nav-link"><span>📚</span>Course Management</a>
+            <a href="#analyticsSection" class="nav-link"><span>📊</span>Analytics</a>
+            <a href="#activitySection" class="nav-link"><span>🔴</span>Activity Monitoring</a>
+            <a href="#settingsSection" class="nav-link"><span>⚙️</span>System Settings</a>
         </nav>
-
-
         <div class="sidebar-bottom">
-
-            <a href="#">
-                <span>👤</span>
-                Profile
-            </a>
-
-            <a href="../login.html" class="logout">
-                <span>↪</span>
-                Logout
-            </a>
-
+            <a href="#"><span>👤</span>Profile</a>
+            <a href="../login.html" class="logout" onclick="logoutAdmin(event)"><span>↪</span>Logout</a>
         </div>
-
     </aside>
 
-
-    <!-- MAIN -->
-
     <main class="main-content">
-
-
-        <!-- TOPBAR -->
-
         <header class="topbar">
-
-            <div>
-
-                <p class="page-label">
-                    ADMIN DASHBOARD
-                </p>
-
-                <h2>
-                    Overview
-                </h2>
-
-            </div>
-
-
+            <div><p class="page-label">ADMIN DASHBOARD</p><h2 id="pageTitle">Overview</h2></div>
             <div class="top-actions">
-
-                <button class="notification">
-                    🔔
-                    <span class="notification-dot"></span>
-                </button>
-
-
-                <div class="profile">
-
-                    <div class="avatar small">
-                        A
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Admin
-                        </strong>
-
-                        <small>
-                            Administrator
-                        </small>
-
-                    </div>
-
-                </div>
-
+                <button class="notification">🔔<span class="notification-dot"></span></button>
+                <div class="profile"><div class="avatar small" id="adminTopAvatar">A</div><div><strong id="adminTopName">Admin</strong><small>Administrator</small></div></div>
             </div>
-
         </header>
 
-
-        <!-- WELCOME -->
-
-        <section class="welcome-card">
-
-            <div>
-
-                <p>
-                    System Overview 👋
-                </p>
-
-                <h1>
-                    Manage your<br>
-                    learning platform.
-                </h1>
-
-                <span>
-                    Monitor users, courses and platform activity.
-                </span>
-
-            </div>
-
-            <div class="welcome-icon">
-                🛡️
-            </div>
-
+        <section class="welcome-card" id="overviewSection">
+            <div><p>System Overview 👋</p><h1>Manage your<br>learning platform.</h1><span>Monitor users, courses and platform activity.</span></div>
+            <div class="welcome-icon">🛡️</div>
         </section>
-
-
-        <!-- STATISTICS -->
 
         <section class="stats">
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon purple">
-                    👥
-                </div>
-
-                <div>
-
-                    <span>
-                        Total Users
-                    </span>
-
-                    <h3>
-                        248
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon blue">
-                    📚
-                </div>
-
-                <div>
-
-                    <span>
-                        Total Courses
-                    </span>
-
-                    <h3>
-                        18
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon orange">
-                    👨‍🏫
-                </div>
-
-                <div>
-
-                    <span>
-                        Instructors
-                    </span>
-
-                    <h3>
-                        24
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon green">
-                    🎓
-                </div>
-
-                <div>
-
-                    <span>
-                        Students
-                    </span>
-
-                    <h3>
-                        223
-                    </h3>
-
-                </div>
-
-            </div>
-
+            <div class="stat-card"><div class="stat-icon purple">👥</div><div><span>Total Users</span><h3 id="totalUsers">0</h3></div></div>
+            <div class="stat-card"><div class="stat-icon blue">📚</div><div><span>Total Courses</span><h3 id="totalCourses">0</h3></div></div>
+            <div class="stat-card"><div class="stat-icon orange">👨‍🏫</div><div><span>Instructors</span><h3 id="totalInstructors">0</h3></div></div>
+            <div class="stat-card"><div class="stat-icon green">🎓</div><div><span>Students</span><h3 id="totalStudents">0</h3></div></div>
         </section>
 
-
-        <!-- USERS + ACTIVITY -->
-
-        <section class="content-grid">
-
-
-            <!-- USERS -->
-
+        <section class="content-grid" id="usersSection">
             <div class="panel">
-
                 <div class="panel-heading">
-
-                    <div>
-
-                        <span class="section-label">
-                            USER MANAGEMENT
-                        </span>
-
-                        <h3>
-                            Recent Users
-                        </h3>
-
-                    </div>
-
-
-                    <div class="admin-actions">
-
-                        <button class="admin-btn">
-                            + Add User
-                        </button>
-
-                        <button class="admin-btn secondary">
-                            View All
-                        </button>
-
-                    </div>
-
+                    <div><span class="section-label">USER MANAGEMENT</span><h3>All User Accounts</h3></div>
+                    <div class="admin-actions"><button class="admin-btn" onclick="openUserModal()">+ Add User</button></div>
                 </div>
-
-
-                <div class="user-row"
-                     style="border-top:none; color:#94a3b8; font-size:10px;">
-
-                    <span>
-                        USER
-                    </span>
-
-                    <span>
-                        ROLE
-                    </span>
-
-                    <span>
-                        STATUS
-                    </span>
-
-                    <span>
-                        ACTION
-                    </span>
-
+                <div style="padding:0 20px 14px"><input id="userSearch" class="admin-search" placeholder="Search by name or email..." oninput="renderUsers()"></div>
+                <div class="admin-table-wrap" style="padding:0 20px 20px">
+                    <table class="admin-table"><thead><tr><th>USER</th><th>ROLE</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="usersTable"><tr><td colspan="4"><div class="empty-state">Loading users...</div></td></tr></tbody></table>
                 </div>
-
-
-                <div class="user-row">
-
-                    <div class="user-info">
-
-                        <div class="user-avatar">
-                            D
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Dhoni
-                            </strong>
-
-                            <small>
-                                dhoni@lms.com
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                    <span class="role-badge role-student">
-                        STUDENT
-                    </span>
-
-                    <span class="online">
-                        ● Online
-                    </span>
-
-                    <span>
-                        ⋮
-                    </span>
-
-                </div>
-
-
-                <div class="user-row">
-
-                    <div class="user-info">
-
-                        <div class="user-avatar">
-                            J
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                John
-                            </strong>
-
-                            <small>
-                                john@lms.com
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                    <span class="role-badge role-instructor">
-                        INSTRUCTOR
-                    </span>
-
-                    <span class="online">
-                        ● Online
-                    </span>
-
-                    <span>
-                        ⋮
-                    </span>
-
-                </div>
-
-
-                <div class="user-row">
-
-                    <div class="user-info">
-
-                        <div class="user-avatar">
-                            R
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Rahul
-                            </strong>
-
-                            <small>
-                                rahul@lms.com
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                    <span class="role-badge role-student">
-                        STUDENT
-                    </span>
-
-                    <span>
-                        ● Offline
-                    </span>
-
-                    <span>
-                        ⋮
-                    </span>
-
-                </div>
-
             </div>
 
-
-            <!-- ACTIVITY -->
-
-            <div class="panel">
-
-                <div class="panel-heading">
-
-                    <div>
-
-                        <span class="section-label">
-                            MONITORING
-                        </span>
-
-                        <h3>
-                            Recent Activity
-                        </h3>
-
-                    </div>
-
-                </div>
-
-
-                <div class="activity">
-
-                    <div class="activity-icon">
-                        👤
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            New student registered
-                        </h4>
-
-                        <p>
-                            Rahul joined the platform • 10 min ago
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="activity">
-
-                    <div class="activity-icon">
-                        📚
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            New course created
-                        </h4>
-
-                        <p>
-                            Web Development • 1 hour ago
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="activity">
-
-                    <div class="activity-icon">
-                        📤
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            Material uploaded
-                        </h4>
-
-                        <p>
-                            Java Programming • 2 hours ago
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="activity">
-
-                    <div class="activity-icon">
-                        📝
-                    </div>
-
-                    <div>
-
-                        <h4>
-                            Assignment submitted
-                        </h4>
-
-                        <p>
-                            Java OOP • 3 hours ago
-                        </p>
-
-                    </div>
-
-                </div>
-
+            <div class="panel" id="activitySection">
+                <div class="panel-heading"><div><span class="section-label">MONITORING</span><h3>Recent Activity</h3></div><button class="admin-btn secondary" onclick="loadDashboard()">Refresh</button></div>
+                <div id="activityContainer" style="padding:0 20px 20px"><div class="empty-state">Loading activity...</div></div>
             </div>
-
         </section>
 
-
-        <!-- COURSE MANAGEMENT -->
-
-        <section class="bottom-grid">
-
-
-            <div class="panel">
-
-                <div class="panel-heading">
-
-                    <div>
-
-                        <span class="section-label">
-                            COURSE MANAGEMENT
-                        </span>
-
-                        <h3>
-                            Popular Courses
-                        </h3>
-
-                    </div>
-
-                    <a href="#">
-                        View All →
-                    </a>
-
-                </div>
-
-
-                <div class="course-admin-row">
-
-                    <div class="course-admin-info">
-
-                        <div class="course-admin-icon">
-                            ☕
-                        </div>
-
-                        <div>
-
-                            <h4>
-                                Java Programming
-                            </h4>
-
-                            <p>
-                                Instructor: John
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="course-count">
-
-                        <strong>
-                            45
-                        </strong>
-
-                        <span>
-                            Students
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="course-admin-row">
-
-                    <div class="course-admin-info">
-
-                        <div class="course-admin-icon">
-                            🗄️
-                        </div>
-
-                        <div>
-
-                            <h4>
-                                Database Management
-                            </h4>
-
-                            <p>
-                                Instructor: Alex
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="course-count">
-
-                        <strong>
-                            52
-                        </strong>
-
-                        <span>
-                            Students
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="course-admin-row">
-
-                    <div class="course-admin-info">
-
-                        <div class="course-admin-icon">
-                            🌐
-                        </div>
-
-                        <div>
-
-                            <h4>
-                                Web Development
-                            </h4>
-
-                            <p>
-                                Instructor: Sarah
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="course-count">
-
-                        <strong>
-                            38
-                        </strong>
-
-                        <span>
-                            Students
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- SYSTEM SETTINGS -->
-
-            <div class="panel">
-
-                <div class="panel-heading">
-
-                    <div>
-
-                        <span class="section-label">
-                            SYSTEM
-                        </span>
-
-                        <h3>
-                            System Settings
-                        </h3>
-
-                    </div>
-
-                </div>
-
-
-                <div class="system-item">
-
-                    <div>
-
-                        <h4>
-                            User Registration
-                        </h4>
-
-                        <p>
-                            Allow new users to register
-                        </p>
-
-                    </div>
-
-                    <div class="toggle"></div>
-
-                </div>
-
-
-                <div class="system-item">
-
-                    <div>
-
-                        <h4>
-                            Course Creation
-                        </h4>
-
-                        <p>
-                            Allow instructors to create courses
-                        </p>
-
-                    </div>
-
-                    <div class="toggle"></div>
-
-                </div>
-
-
-                <div class="system-item">
-
-                    <div>
-
-                        <h4>
-                            Email Notifications
-                        </h4>
-
-                        <p>
-                            Send platform notifications
-                        </p>
-
-                    </div>
-
-                    <div class="toggle"></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ANALYTICS -->
-
-        <section class="panel" style="margin-top:20px;">
-
+        <section class="panel" id="coursesSection" style="margin-top:20px">
             <div class="panel-heading">
-
-                <div>
-
-                    <span class="section-label">
-                        ANALYTICS
-                    </span>
-
-                    <h3>
-                        Platform Overview
-                    </h3>
-
-                </div>
-
-                <select style="
-                    border:1px solid #e5e7eb;
-                    padding:8px 12px;
-                    border-radius:7px;
-                    color:#64748b;
-                    font-size:11px;
-                ">
-
-                    <option>
-                        Last 7 Days
-                    </option>
-
-                    <option>
-                        Last 30 Days
-                    </option>
-
-                    <option>
-                        This Year
-                    </option>
-
-                </select>
-
+                <div><span class="section-label">COURSE MANAGEMENT</span><h3>All Courses</h3></div>
+                <button class="admin-btn" onclick="openCourseModal()">+ Create Course</button>
             </div>
-
-
-            <div style="
-                display:grid;
-                grid-template-columns:repeat(3,1fr);
-                gap:20px;
-            ">
-
-                <div style="
-                    padding:20px;
-                    background:#f8fafc;
-                    border-radius:10px;
-                ">
-
-                    <span style="
-                        color:#64748b;
-                        font-size:11px;
-                    ">
-                        ENROLLMENTS
-                    </span>
-
-                    <h2 style="
-                        margin-top:8px;
-                        color:#4f46e5;
-                    ">
-                        156
-                    </h2>
-
-                    <p style="
-                        color:#16a34a;
-                        font-size:10px;
-                        margin-top:5px;
-                    ">
-                        ↑ 12% this month
-                    </p>
-
-                </div>
-
-
-                <div style="
-                    padding:20px;
-                    background:#f8fafc;
-                    border-radius:10px;
-                ">
-
-                    <span style="
-                        color:#64748b;
-                        font-size:11px;
-                    ">
-                        COMPLETION RATE
-                    </span>
-
-                    <h2 style="
-                        margin-top:8px;
-                        color:#4f46e5;
-                    ">
-                        74%
-                    </h2>
-
-                    <p style="
-                        color:#16a34a;
-                        font-size:10px;
-                        margin-top:5px;
-                    ">
-                        ↑ 5% this month
-                    </p>
-
-                </div>
-
-
-                <div style="
-                    padding:20px;
-                    background:#f8fafc;
-                    border-radius:10px;
-                ">
-
-                    <span style="
-                        color:#64748b;
-                        font-size:11px;
-                    ">
-                        ACTIVE USERS
-                    </span>
-
-                    <h2 style="
-                        margin-top:8px;
-                        color:#4f46e5;
-                    ">
-                        189
-                    </h2>
-
-                    <p style="
-                        color:#16a34a;
-                        font-size:10px;
-                        margin-top:5px;
-                    ">
-                        ↑ 8% this month
-                    </p>
-
-                </div>
-
-            </div>
-
+            <div id="coursesContainer" style="padding:0 20px 20px"><div class="empty-state">Loading courses...</div></div>
         </section>
 
-    </main>
+        <section class="panel" id="analyticsSection" style="margin-top:20px">
+            <div class="panel-heading"><div><span class="section-label">ANALYTICS</span><h3>Platform Performance</h3></div></div>
+            <div class="admin-grid-3" style="padding:0 20px 20px">
+                <div class="admin-stat"><span>ENROLLMENTS</span><strong id="totalEnrollments">0</strong><small>Total course enrollments</small></div>
+                <div class="admin-stat"><span>SUBMISSIONS</span><strong id="totalSubmissions">0</strong><small>Assignment submissions</small></div>
+                <div class="admin-stat"><span>GRADED</span><strong id="gradedSubmissions">0</strong><small>Graded submissions</small></div>
+                <div class="admin-stat"><span>AVERAGE MARKS</span><strong id="averageMarks">0%</strong><small>Across graded work</small></div>
+                <div class="admin-stat"><span>COURSE AVG ENROLLMENT</span><strong id="avgEnrollment">0</strong><small>Students per course</small></div>
+                <div class="admin-stat"><span>REGISTRATIONS</span><strong id="recentRegistrations">0</strong><small>Users registered in last 30 days</small></div>
+            </div>
+        </section>
 
+        <section class="panel" id="settingsSection" style="margin-top:20px">
+            <div class="panel-heading"><div><span class="section-label">SYSTEM</span><h3>System Settings</h3></div></div>
+            <div style="padding:0 20px 20px">
+                <div class="system-item"><div><h4>User Registration</h4><p>Allow new users to register on the platform.</p></div><button class="switch" id="settingRegistration" onclick="toggleSetting('registration_enabled',this)"></button></div>
+                <div class="system-item"><div><h4>Course Creation</h4><p>Allow instructors to create new courses.</p></div><button class="switch" id="settingCourseCreation" onclick="toggleSetting('course_creation_enabled',this)"></button></div>
+                <div class="system-item"><div><h4>Email Notifications</h4><p>Enable platform notification setting.</p></div><button class="switch" id="settingNotifications" onclick="toggleSetting('email_notifications_enabled',this)"></button></div>
+            </div>
+        </section>
+    </main>
 </div>
 
+<div class="modal-backdrop" id="userModal">
+    <div class="admin-modal">
+        <h3 id="userModalTitle">Create User</h3>
+        <form id="userForm">
+            <input type="hidden" id="editUserId">
+            <div class="form-row">
+                <div class="form-group"><label>Name</label><input id="userName" required maxlength="100"></div>
+                <div class="form-group"><label>Email</label><input id="userEmail" type="email" required maxlength="100"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Role</label><select id="userRole"><option>STUDENT</option><option>INSTRUCTOR</option><option>ADMIN</option></select></div>
+                <div class="form-group" id="passwordGroup"><label>Password</label><input id="userPassword" type="password" minlength="6" placeholder="Minimum 6 characters"></div>
+            </div>
+            <div class="modal-actions"><button type="button" class="admin-btn secondary" onclick="closeModal('userModal')">Cancel</button><button class="admin-btn">Save User</button></div>
+        </form>
+    </div>
+</div>
+
+<div class="modal-backdrop" id="courseModal">
+    <div class="admin-modal">
+        <h3 id="courseModalTitle">Create Course</h3>
+        <form id="courseForm">
+            <input type="hidden" id="editCourseId">
+            <div class="form-group"><label>Course Title</label><input id="courseTitle" required maxlength="150"></div>
+            <div class="form-group"><label>Description</label><textarea id="courseDescription"></textarea></div>
+            <div class="form-group"><label>Syllabus</label><textarea id="courseSyllabus"></textarea></div>
+            <div class="form-group"><label>Instructor</label><select id="courseInstructor" required></select></div>
+            <div class="modal-actions"><button type="button" class="admin-btn secondary" onclick="closeModal('courseModal')">Cancel</button><button class="admin-btn">Save Course</button></div>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let users = [];
+let courses = [];
+let dashboard = null;
+
+const $ = id => document.getElementById(id);
+const esc = value => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+async function getJson(url, options = {}) {
+    const response = await fetch(url, {credentials:'same-origin', ...options});
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.message || 'Request failed');
+    return data;
+}
+function toast(message) {
+    $('toast').textContent = message;
+    $('toast').classList.add('show');
+    setTimeout(() => $('toast').classList.remove('show'), 2500);
+}
+function closeModal(id){$(id).classList.remove('show')}
+function openUserModal(user=null){
+    $('userModal').classList.add('show');
+    $('userModalTitle').textContent = user ? 'Edit User' : 'Create User';
+    $('editUserId').value = user?.userId || '';
+    $('userName').value = user?.name || '';
+    $('userEmail').value = user?.email || '';
+    $('userRole').value = user?.role || 'STUDENT';
+    $('userPassword').value = '';
+    $('passwordGroup').style.display = user ? 'none' : 'block';
+}
+function openCourseModal(course=null){
+    const instructors = users.filter(u => u.role === 'INSTRUCTOR');
+    $('courseInstructor').innerHTML = instructors.length
+        ? instructors.map(u=>`<option value="${u.userId}">${esc(u.name)} — ${esc(u.email)}</option>`).join('')
+        : '<option value="">No instructors available</option>';
+    $('courseModal').classList.add('show');
+    $('courseModalTitle').textContent = course ? 'Edit Course' : 'Create Course';
+    $('editCourseId').value = course?.courseId || '';
+    $('courseTitle').value = course?.title || '';
+    $('courseDescription').value = course?.description || '';
+    $('courseSyllabus').value = course?.syllabus || '';
+    $('courseInstructor').value = course?.instructorId || '';
+}
+function roleClass(role){return role==='ADMIN'?'role-admin':role==='INSTRUCTOR'?'role-instructor':'role-student'}
+
+function renderUsers(){
+    const q = $('userSearch').value.trim().toLowerCase();
+    const list = users.filter(u => !q || u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q));
+    if(!list.length){$('usersTable').innerHTML='<tr><td colspan="4"><div class="empty-state">No users found.</div></td></tr>';return}
+    $('usersTable').innerHTML=list.map(u=>`
+        <tr>
+            <td><strong>${esc(u.name)}</strong><div class="small-muted">${esc(u.email)}</div></td>
+            <td><span class="role-badge ${roleClass(u.role)}">${esc(u.role)}</span></td>
+            <td><span class="status-badge status-on">ACTIVE</span></td>
+            <td><div class="admin-actions">
+                <button class="admin-btn secondary" onclick='editUser(${JSON.stringify(u)})'>Edit</button>
+                <button class="admin-btn danger" onclick="deleteUser(${u.userId})">Delete</button>
+            </div></td>
+        </tr>`).join('');
+}
+function editUser(u){openUserModal(u)}
+async function deleteUser(id){
+    if(!confirm('Delete this user account? This can fail if the user is referenced by active courses/enrollments.')) return;
+    try{
+        await getJson('/lms/admin/users?id='+encodeURIComponent(id),{method:'DELETE'});
+        toast('User deleted successfully');
+        await loadDashboard();
+    }catch(e){toast(e.message)}
+}
+
+function renderCourses(){
+    if(!courses.length){$('coursesContainer').innerHTML='<div class="empty-state">No courses available.</div>';return}
+    $('coursesContainer').innerHTML=courses.map(c=>`
+        <div class="admin-course-card">
+            <div class="admin-course-head">
+                <div>
+                    <h4>${esc(c.title)}</h4>
+                    <p>Instructor: ${esc(c.instructorName || 'Not assigned')} • ${c.studentCount || 0} enrolled</p>
+                    <p>${esc(c.description || 'No description available.')}</p>
+                </div>
+                <div class="admin-actions">
+                    <button class="admin-btn secondary" onclick='editCourse(${JSON.stringify(c)})'>Edit</button>
+                    <button class="admin-btn danger" onclick="deleteCourse(${c.courseId})">Delete</button>
+                </div>
+            </div>
+        </div>`).join('');
+}
+function editCourse(c){openCourseModal(c)}
+async function deleteCourse(id){
+    if(!confirm('Delete this course? Courses with active enrollments may be protected.')) return;
+    try{
+        await getJson('/lms/admin/courses?id='+encodeURIComponent(id),{method:'DELETE'});
+        toast('Course deleted successfully');
+        await loadDashboard();
+    }catch(e){toast(e.message)}
+}
+
+function renderActivity(){
+    const list = dashboard?.activity || [];
+    if(!list.length){$('activityContainer').innerHTML='<div class="empty-state">No recent activity found.</div>';return}
+    $('activityContainer').innerHTML=list.map(a=>`
+        <div class="activity">
+            <div class="activity-icon">${a.icon || '•'}</div>
+            <div><h4>${esc(a.title)}</h4><p>${esc(a.description)} • ${esc(a.time)}</p></div>
+        </div>`).join('');
+}
+function setStats(){
+    const s=dashboard.stats||{};
+    $('totalUsers').textContent=s.totalUsers||0;
+    $('totalCourses').textContent=s.totalCourses||0;
+    $('totalInstructors').textContent=s.totalInstructors||0;
+    $('totalStudents').textContent=s.totalStudents||0;
+    $('totalEnrollments').textContent=s.totalEnrollments||0;
+    $('totalSubmissions').textContent=s.totalSubmissions||0;
+    $('gradedSubmissions').textContent=s.gradedSubmissions||0;
+    $('averageMarks').textContent=(s.averageMarks||0)+'%';
+    $('avgEnrollment').textContent=s.avgEnrollment||0;
+    $('recentRegistrations').textContent=s.recentRegistrations||0;
+}
+function setSettings(settings){
+    const map={registration_enabled:'settingRegistration',course_creation_enabled:'settingCourseCreation',email_notifications_enabled:'settingNotifications'};
+    Object.keys(map).forEach(k=>$(map[k]).classList.toggle('on',settings[k]===true));
+}
+
+async function loadDashboard(){
+    try{
+        dashboard=await getJson('/lms/admin/dashboard');
+        users=dashboard.users||[];
+        courses=dashboard.courses||[];
+        setStats(); renderUsers(); renderCourses(); renderActivity(); setSettings(dashboard.settings||{});
+        const name=dashboard.adminName||'Admin';
+        $('adminSideName').textContent=name;$('adminTopName').textContent=name;
+        const letter=name.charAt(0).toUpperCase();$('adminAvatar').textContent=letter;$('adminTopAvatar').textContent=letter;
+    }catch(e){toast(e.message)}
+}
+async function toggleSetting(key,button){
+    const enabled=button.classList.contains('on');
+    try{
+        await getJson('/lms/admin/settings',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'key='+encodeURIComponent(key)+'&value='+encodeURIComponent(!enabled)});
+        button.classList.toggle('on',!enabled);
+        toast('Setting updated');
+    }catch(e){toast(e.message)}
+}
+$('userForm').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const id=$('editUserId').value;
+    const body=new URLSearchParams({name:$('userName').value.trim(),email:$('userEmail').value.trim(),role:$('userRole').value});
+    if(id) body.set('id',id);
+    else body.set('password',$('userPassword').value);
+    try{
+        await getJson('/lms/admin/users',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});
+        closeModal('userModal');toast(id?'User updated':'User created');await loadDashboard();
+    }catch(e){toast(e.message)}
+});
+$('courseForm').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const id=$('editCourseId').value;
+    const body=new URLSearchParams({title:$('courseTitle').value.trim(),description:$('courseDescription').value.trim(),syllabus:$('courseSyllabus').value.trim(),instructorId:$('courseInstructor').value});
+    if(id) body.set('id',id);
+    try{
+        await getJson('/lms/admin/courses',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});
+        closeModal('courseModal');toast(id?'Course updated':'Course created');await loadDashboard();
+    }catch(e){toast(e.message)}
+});
+document.querySelectorAll('.nav-link').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));a.classList.add('active');}));
+async function logoutAdmin(event){
+    event.preventDefault();
+    try{await fetch('/lms/logout',{method:'POST',credentials:'same-origin'});}catch(e){}
+    window.location.href='../login.html';
+}
+loadDashboard();
+</script>
 </body>
 </html>

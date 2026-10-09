@@ -14,72 +14,126 @@
 
 <div class="dashboard">
 
-    <!-- SIDEBAR -->
+    <!-- ================= SIDEBAR ================= -->
 
     <aside class="sidebar">
 
+        <!-- BRAND -->
         <div class="brand">
             Learn<span>Hub</span>
         </div>
 
+
+        <!-- STUDENT PROFILE -->
         <div class="student-mini">
-            <div class="avatar">D</div>
+
+            <div class="avatar">
+                S
+            </div>
 
             <div>
-                <strong>Dhoni</strong>
+                <strong>Student</strong>
                 <small>Student</small>
             </div>
+
         </div>
+
+
+        <!-- NAVIGATION -->
 
         <nav class="side-nav">
 
-            <a href="#" class="active">
+            <!-- OVERVIEW -->
+            <a href="#overviewSection" class="active nav-link">
+
                 <span>▦</span>
                 Overview
+
             </a>
 
-            <a href="#">
-                <span>📚</span>
-                My Courses
-            </a>
 
-            <a href="#">
+     <!-- MY COURSES --> 
+<a href="#coursesSection" class="nav-link">
+    <span>📚</span>
+    My Courses
+</a>
+
+
+            <!-- BROWSE COURSES -->
+            <a href="#browseSection" class="nav-link">
+
                 <span>🔍</span>
                 Browse Courses
+
             </a>
 
-            <a href="#">
+
+            <!-- MATERIALS -->
+            <a href="#materialsSection" class="nav-link">
+
                 <span>📄</span>
                 Materials
+
             </a>
 
-            <a href="#">
+
+            <!-- ASSIGNMENTS -->
+            <a href="#assignmentsSection" class="nav-link">
+
                 <span>📝</span>
                 Assignments
+
             </a>
 
-            <a href="#">
+            <!-- QUIZZES -->
+<a href="#quizzesSection" class="nav-link">
+    <span>🎯</span>
+    Quizzes
+</a>
+
+
+            <!-- PROGRESS -->
+            <a href="#progressSection" class="nav-link">
+
                 <span>📈</span>
                 My Progress
+
             </a>
 
-            <a href="#">
+
+            <!-- GRADES -->
+            <a href="#gradesSection" class="nav-link">
+
                 <span>🎯</span>
                 Grades & Feedback
+
             </a>
 
         </nav>
 
+
+        <!-- SIDEBAR BOTTOM -->
+
         <div class="sidebar-bottom">
 
-            <a href="#">
+            <!-- SETTINGS -->
+
+            <a href="#settingsSection" class="nav-link">
+
                 <span>⚙️</span>
                 Settings
+
             </a>
 
-            <a href="../login.html" class="logout">
+
+            <!-- LOGOUT -->
+
+            <a href="../logout"
+               class="logout">
+
                 <span>↪</span>
                 Logout
+
             </a>
 
         </div>
@@ -87,18 +141,27 @@
     </aside>
 
 
-    <!-- MAIN -->
+    <!-- ================= MAIN CONTENT ================= -->
 
     <main class="main-content">
+
 
         <!-- TOPBAR -->
 
         <header class="topbar">
 
             <div>
-                <p class="page-label">STUDENT DASHBOARD</p>
-                <h2>Overview</h2>
+
+                <p class="page-label">
+                    STUDENT DASHBOARD
+                </p>
+
+                <h2 id="pageTitle">
+                    Overview
+                </h2>
+
             </div>
+
 
             <div class="top-actions">
 
@@ -107,13 +170,25 @@
                     <span class="notification-dot"></span>
                 </button>
 
+
                 <div class="profile">
-                    <div class="avatar small">D</div>
+
+                    <div class="avatar small">
+                        S
+                    </div>
 
                     <div>
-                        <strong>Dhoni</strong>
-                        <small>Student</small>
+
+                        <strong>
+                            Student
+                        </strong>
+
+                        <small>
+                            Student
+                        </small>
+
                     </div>
+
                 </div>
 
             </div>
@@ -121,419 +196,1627 @@
         </header>
 
 
-        <!-- WELCOME -->
-
+        <!-- ================= OVERVIEW ================= -->
+        <section class="dashboard-section active-section" id="overviewSection" data-title="Overview">
+        <!-- ================= WELCOME ================= -->
         <section class="welcome-card">
-
             <div>
-
-                <p>Good evening, Dhoni 👋</p>
-
-                <h1>
-                    Keep learning,<br>
-                    keep growing.
-                </h1>
-
-                <span>
-                    You are making great progress in your courses.
-                </span>
-
+                <p id="welcomeText">Welcome 👋</p>
+                <h1>Keep learning,<br>keep growing.</h1>
+                <span id="welcomeSubtext">Your real course, assignment and progress data will appear here.</span>
             </div>
-
-            <div class="welcome-icon">
-                🎓
-            </div>
-
+            <div class="welcome-icon">🎓</div>
         </section>
 
-
-        <!-- STAT CARDS -->
-
+        <!-- ================= REAL STATS ================= -->
         <section class="stats">
-
             <div class="stat-card">
-
-                <div class="stat-icon purple">
-                    📚
-                </div>
-
-                <div>
-                    <span>My Courses</span>
-                    <h3>4</h3>
-                </div>
-
+                <div class="stat-icon purple">📚</div>
+                <div><span>My Courses</span><h3 id="courseCount">0</h3></div>
             </div>
-
-
             <div class="stat-card">
-
-                <div class="stat-icon orange">
-                    📝
-                </div>
-
-                <div>
-                    <span>Pending Assignments</span>
-                    <h3>3</h3>
-                </div>
-
+                <div class="stat-icon orange">📝</div>
+                <div><span>Pending Assignments</span><h3 id="pendingCount">0</h3></div>
             </div>
-
-
             <div class="stat-card">
-
-                <div class="stat-icon green">
-                    ✓
-                </div>
-
-                <div>
-                    <span>Completed</span>
-                    <h3>12</h3>
-                </div>
-
+                <div class="stat-icon green">✓</div>
+                <div><span>Submitted Assignments</span><h3 id="submittedCount">0</h3></div>
             </div>
-
-
             <div class="stat-card">
-
-                <div class="stat-icon blue">
-                    📈
-                </div>
-
-                <div>
-                    <span>Average Progress</span>
-                    <h3>72%</h3>
-                </div>
-
+                <div class="stat-icon blue">📈</div>
+                <div><span>Graded Assignments</span><h3 id="gradedCount">0</h3></div>
             </div>
-
         </section>
 
-
-        <!-- CONTENT GRID -->
-
-        <section class="content-grid">
-
-
-            <!-- CONTINUE LEARNING -->
-
-            <div class="panel continue-panel">
-
-                <div class="panel-heading">
-
+        <!-- ================= OVERVIEW ACTIVITY ================= -->
+        <section class="overview-lower">
+            <div class="overview-panel">
+                <div class="overview-panel-head">
                     <div>
-                        <span class="section-label">
-                            KEEP LEARNING
-                        </span>
-
+                        <span class="section-label">LEARNING</span>
                         <h3>Continue Learning</h3>
                     </div>
+                    <button class="mini-link" type="button" onclick="showSection('coursesSection')">View all →</button>
+                </div>
+                <div id="overviewCourses" class="overview-course-list">
+                    <div class="overview-loading">Loading your courses...</div>
+                </div>
+            </div>
 
-                    <a href="#">
-                        View All →
-                    </a>
+            <div class="overview-panel">
+                <div class="overview-panel-head">
+                    <div>
+                        <span class="section-label">UPCOMING</span>
+                        <h3>Upcoming Deadlines</h3>
+                    </div>
+                    <button class="mini-link" type="button" onclick="showSection('assignmentsSection')">View all →</button>
+                </div>
+                <div id="overviewDeadlines" class="deadline-list">
+                    <div class="overview-loading">Loading deadlines...</div>
+                </div>
+            </div>
+        </section>
+        </section>
+
+        <!-- ================= BROWSE COURSES ================= -->
+        <section class="panel dashboard-section" id="browseSection" data-title="Browse Courses">
+            <div class="panel-heading">
+                <div><span class="section-label">EXPLORE</span><h3>Browse Courses</h3></div>
+            </div>
+            <div id="browseCoursesContainer" class="dashboard-list"><p class="empty-state">Loading courses...</p></div>
+        </section>
+
+        <!-- ================= MY COURSES ================= -->
+        <section class="panel dashboard-section" id="coursesSection" data-title="My Courses">
+            <div class="panel-heading">
+                <div><span class="section-label">LEARNING</span><h3>My Courses</h3></div>
+            </div>
+            <div id="coursesContainer" class="dashboard-list"><p class="empty-state">Loading courses...</p></div>
+        </section>
+
+        <!-- ================= MATERIALS ================= -->
+        <section class="panel dashboard-section" id="materialsSection" data-title="Materials">
+            <div class="panel-heading">
+                <div><span class="section-label">COURSE CONTENT</span><h3>Materials</h3></div>
+            </div>
+            <div id="materialsContainer" class="dashboard-list"><p class="empty-state">Loading materials...</p></div>
+        </section>
+
+        <!-- ================= ASSIGNMENTS ================= -->
+        <section class="panel dashboard-section" id="assignmentsSection" data-title="Assignments">
+            <div class="panel-heading">
+                <div><span class="section-label">WORK</span><h3>Assignments</h3></div>
+            </div>
+            <div id="assignmentsContainer" class="dashboard-list"><p class="empty-state">Loading assignments...</p></div>
+        </section>
+
+        <!-- ================= QUIZZES ================= -->
+
+<section
+    class="panel dashboard-section"
+    id="quizzesSection"
+    data-title="Quizzes">
+
+    <div class="panel-heading">
+
+        <div>
+            <span class="section-label">ASSESSMENT</span>
+            <h3>Quizzes</h3>
+        </div>
+
+    </div>
+
+    <div
+        id="quizzesContainer"
+        class="dashboard-list">
+
+        <p class="empty-state">
+            Loading quizzes...
+        </p>
+
+    </div>
+
+</section>
+
+
+        <!-- ================= PROGRESS ================= -->
+        <section class="panel progress-panel dashboard-section" id="progressSection" data-title="My Progress">
+            <div class="panel-heading">
+                <div><span class="section-label">PERFORMANCE</span><h3>My Progress</h3></div>
+            </div>
+            <div id="progressContainer"><p class="empty-state">Loading progress...</p></div>
+        </section>
+
+        <!-- ================= GRADES ================= -->
+        <section class="panel dashboard-section" id="gradesSection" data-title="Grades & Feedback">
+            <div class="panel-heading">
+                <div><span class="section-label">RESULTS</span><h3>Grades & Feedback</h3></div>
+            </div>
+            <div id="gradesContainer" class="dashboard-list"><p class="empty-state">Loading grades...</p></div>
+        </section>
+
+        <!-- ================= SETTINGS ================= -->
+        <section class="panel dashboard-section" id="settingsSection" data-title="Settings">
+            <div class="panel-heading">
+                <div><span class="section-label">ACCOUNT</span><h3>Settings</h3></div>
+            </div>
+            <div class="settings-body">
+                <div class="settings-card">
+                    <p><strong>Current Account</strong></p>
+                    <p id="settingsUser" style="margin-top:8px;color:#64748b;">Loading account information...</p>
+                </div>
+            </div>
+        </section>
+
+        <style>
+
+        .quiz-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px;
+    margin-bottom: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background: #ffffff;
+    transition: 0.2s ease;
+}
+
+.quiz-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.quiz-card-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quiz-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #f0edff;
+    font-size: 24px;
+}
+
+.quiz-card h4 {
+    margin: 0 0 6px;
+    font-size: 17px;
+}
+
+.quiz-card p {
+    margin: 0 0 8px;
+    color: #6b7280;
+}
+
+.quiz-status {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #ecfdf5;
+    color: #059669;
+    font-weight: 600;
+}
+
+.quiz-start-button {
+    border: none;
+    border-radius: 10px;
+    padding: 11px 18px;
+    background: #635bff;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.quiz-start-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+/* =========================================================
+   LEARNHUB — PREMIUM STUDENT DASHBOARD
+   ========================================================= */
+:root{
+    --bg:#f4f6fb;
+    --surface:#ffffff;
+    --surface-soft:#f8f9fd;
+    --ink:#172033;
+    --muted:#6b7890;
+    --line:#e8ecf4;
+    --primary:#5b4df6;
+    --primary-dark:#493bd8;
+    --purple:#7657ff;
+    --nav:#0d1424;
+    --nav-soft:#182238;
+    --success:#10b981;
+    --warning:#f59e0b;
+    --danger:#ef4444;
+    --shadow:0 18px 50px rgba(25,35,60,.08);
+}
+
+*{box-sizing:border-box}
+
+html,body{height:100%;margin:0}
+
+body{
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 0%, rgba(91,77,246,.07), transparent 28%),
+        var(--bg);
+    color:var(--ink);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+.dashboard{
+    min-height:100vh;
+    height:100vh;
+    display:flex;
+}
+
+.sidebar{
+    width:258px;
+    min-width:258px;
+    height:100vh;
+    position:sticky;
+    top:0;
+    overflow-y:auto;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(105,90,255,.18), transparent 32%),
+        linear-gradient(180deg,#10182a 0%,#0b1220 100%);
+    border-right:1px solid rgba(255,255,255,.05);
+    padding:25px 16px 18px;
+    color:#fff;
+}
+
+.brand{
+    font-size:25px!important;
+    font-weight:800!important;
+    letter-spacing:-.8px;
+    padding:4px 16px 24px!important;
+}
+.brand span{color:#796bff!important}
+
+.student-mini{
+    margin:0 4px 24px;
+    padding:14px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:17px!important;
+    background:rgba(255,255,255,.065)!important;
+    backdrop-filter:blur(10px);
+}
+.student-mini .avatar{
+    width:42px!important;height:42px!important;
+    background:linear-gradient(135deg,#7666ff,#5041e9)!important;
+    box-shadow:0 8px 22px rgba(91,77,246,.35);
+}
+.student-mini strong,.profile strong{font-weight:700}
+.student-mini small,.profile small{opacity:.62}
+
+.side-nav{
+    display:flex;
+    flex-direction:column;
+    gap:5px!important;
+}
+.side-nav a,.sidebar-bottom a{
+    border-radius:12px!important;
+    padding:12px 13px!important;
+    min-height:45px;
+    color:#cbd3e3!important;
+    text-decoration:none;
+    font-size:14px;
+    transition:.2s ease!important;
+}
+.side-nav a:hover,.sidebar-bottom a:hover{
+    background:rgba(255,255,255,.07)!important;
+    color:#fff!important;
+    transform:translateX(3px)!important;
+}
+.side-nav a.active,.sidebar-bottom a.active{
+    color:#fff!important;
+    background:linear-gradient(135deg,#5d4ff7,#6e59ff)!important;
+    box-shadow:0 10px 25px rgba(91,77,246,.27);
+}
+.side-nav a span,.sidebar-bottom a span{
+    width:25px;
+    display:inline-flex;
+    justify-content:center;
+    margin-right:6px;
+}
+.sidebar-bottom{
+    margin-top:auto!important;
+    padding-top:30px;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.main-content{
+    flex:1;
+    min-width:0;
+    height:100vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:0 34px 55px;
+    scroll-behavior:smooth;
+}
+
+.topbar{
+    width:100%;
+    min-height:82px;
+    position:sticky;
+    top:0;
+    z-index:50;
+    margin:0 0 28px;
+    padding:16px 4px;
+    background:rgba(244,246,251,.88)!important;
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(226,231,240,.7)!important;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.page-label{
+    margin:0 0 4px!important;
+    color:var(--primary)!important;
+    font-size:11px!important;
+    font-weight:800!important;
+    letter-spacing:.16em!important;
+}
+.topbar h2{
+    margin:0!important;
+    font-size:28px!important;
+    line-height:1.1;
+    letter-spacing:-.8px;
+    color:#172033!important;
+}
+.top-actions{display:flex;align-items:center;gap:20px}
+.notification{
+    position:relative;
+    width:42px;height:42px;
+    border:1px solid var(--line)!important;
+    border-radius:13px!important;
+    background:#fff!important;
+    box-shadow:0 6px 20px rgba(25,35,60,.06);
+    cursor:pointer;
+}
+.notification-dot{
+    width:7px!important;height:7px!important;
+    background:#ef4444!important;
+    border:2px solid #fff;
+}
+.profile{
+    padding:7px 10px 7px 7px;
+    display:flex!important;
+    align-items:center;
+    gap:9px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:#fff;
+    box-shadow:0 6px 20px rgba(25,35,60,.05);
+}
+.profile .avatar.small{
+    width:36px!important;height:36px!important;
+    background:linear-gradient(135deg,#6d5df6,#4e40e5)!important;
+}
+
+.dashboard-section{display:none!important;animation:pageIn .28s ease}
+.dashboard-section.active-section{display:block!important}
+@keyframes pageIn{
+    from{opacity:0;transform:translateY(9px)}
+    to{opacity:1;transform:none}
+}
+
+#overviewSection{
+    padding:0!important;
+}
+/* ================= OVERVIEW LOWER AREA ================= */
+.overview-lower{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);
+    gap:18px!important;
+    margin-top:18px!important;
+}
+.overview-panel{
+    min-width:0;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:22px;
+    box-shadow:0 12px 34px rgba(25,35,60,.065);
+    overflow:hidden;
+}
+.overview-panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:21px 24px;
+    border-bottom:1px solid #edf0f5;
+}
+.overview-panel-head h3{
+    margin:4px 0 0;
+    font-size:20px;
+    letter-spacing:-.45px;
+    color:#172033;
+}
+.mini-link{
+    border:0;
+    background:transparent;
+    color:#5b4df6;
+    font-weight:750;
+    font-size:12px;
+    cursor:pointer;
+}
+.mini-link:hover{text-decoration:underline}
+.overview-course-list,.deadline-list{padding:8px 18px 18px}
+.overview-course-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:16px 8px;
+    border-bottom:1px solid #eef1f6;
+}
+.overview-course-item:last-child{border-bottom:0}
+.overview-course-icon{
+    width:48px;height:48px;flex:0 0 48px;
+    border-radius:15px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#eeebff,#e3ddff);
+    font-size:22px;
+}
+.overview-course-main{min-width:0;flex:1}
+.overview-course-main h4{
+    margin:0 0 5px;
+    font-size:15px;
+    color:#182033;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.overview-course-main p{margin:0;color:#7a879b;font-size:12px}
+.overview-course-action{
+    padding:9px 12px;
+    border-radius:10px;
+    background:#f0eeff;
+    color:#5144e9;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:800;
+    white-space:nowrap;
+}
+.deadline-item{
+    display:grid;
+    grid-template-columns:52px minmax(0,1fr) auto;
+    align-items:center;
+    gap:13px;
+    padding:16px 6px;
+    border-bottom:1px solid #eef1f6;
+}
+.deadline-item:last-child{border-bottom:0}
+.deadline-date{
+    width:48px;height:48px;
+    border-radius:14px;
+    background:#fff4e6;
+    color:#c2410c;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+}
+/* ================= QUIZ UI ================= */
+
+.quiz-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(25,35,60,.06);
+}
+
+.quiz-card-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quiz-icon {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #eeebff;
+    font-size: 25px;
+}
+
+.quiz-card h4 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: #172033;
+}
+
+.quiz-card p {
+    margin: 0 0 9px;
+    color: #718097;
+    font-size: 13px;
+}
+
+.quiz-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #ecfdf5;
+    color: #047857;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.quiz-start-button {
+    border: 0;
+    padding: 12px 18px;
+    border-radius: 11px;
+    background: linear-gradient(135deg,#5144e9,#6c5af7);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.quiz-start-button:hover {
+    transform: translateY(-2px);
+}
+
+/* QUIZ ATTEMPT */
+
+.quiz-attempt-box {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 28px;
+    background: #fff;
+    border-radius: 22px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 15px 40px rgba(25,35,60,.08);
+}
+
+.quiz-attempt-box h2 {
+    margin: 0 0 25px;
+    color: #172033;
+    font-size: 26px;
+}
+
+.quiz-question {
+    padding: 22px;
+    margin-bottom: 18px;
+    border: 1px solid #e7ebf3;
+    border-radius: 17px;
+    background: #fbfcff;
+}
+
+.quiz-question h3 {
+    margin: 0 0 18px;
+    color: #172033;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.quiz-question label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 16px;
+    margin-top: 10px;
+    border: 1px solid #e1e5ed;
+    border-radius: 12px;
+    background: #fff;
+    color: #334155;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.quiz-question label:hover {
+    border-color: #8b7cff;
+    background: #f7f5ff;
+}
+
+.quiz-question input[type="radio"] {
+    margin-top: 3px;
+    accent-color: #5b4df6;
+}
+
+.quiz-attempt-box .action-button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#5144e9,#6c5af7);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media(max-width:700px) {
+    .quiz-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .quiz-start-button {
+        width: 100%;
+    }
+
+    .quiz-attempt-box {
+        padding: 18px;
+    }
+}
+.dashboard-list{
+    padding:25px 28px 30px!important;
+}
+.data-grid{
+    display:grid!important;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:18px!important;
+}
+.data-card{
+    position:relative;
+    padding:22px!important;
+    margin:0!important;
+    border:1px solid #e7ebf3!important;
+    border-radius:19px!important;
+    background:linear-gradient(180deg,#fff,#fbfcff)!important;
+    box-shadow:0 7px 24px rgba(25,35,60,.045)!important;
+    transition:.22s ease!important;
+}
+.data-card:before{
+    content:"";
+    position:absolute;
+    left:0;top:18px;bottom:18px;
+    width:3px;
+    border-radius:0 4px 4px 0;
+    background:linear-gradient(180deg,#6555f6,#8b7cff);
+}
+.data-card:hover{
+    transform:translateY(-4px)!important;
+    border-color:#d9dff0!important;
+    box-shadow:0 18px 35px rgba(25,35,60,.10)!important;
+}
+.card-kicker{font-size:10px;font-weight:800;letter-spacing:.14em;color:#6b5cf6;margin-bottom:9px}.data-card h4{
+    margin:0 0 8px!important;
+    font-size:18px!important;
+    color:#182033!important;
+}
+.data-card p{
+    margin:7px 0!important;
+    color:#718097!important;
+    line-height:1.55;
+    font-size:14px;
+}
+.real-meta{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:15px!important;
+}
+.real-badge{
+    padding:7px 10px!important;
+    border:1px solid #e7ebf2;
+    border-radius:999px!important;
+    background:#f6f8fc!important;
+    color:#5f6d83!important;
+    font-size:11px!important;
+}
+.real-badge.success{background:#ecfdf5!important;color:#047857!important;border-color:#c8f1dd}
+.real-badge.warning{background:#fff7ed!important;color:#c2410c!important;border-color:#fed7aa}
+.real-badge.info{background:#eef2ff!important;color:#4f46e5!important;border-color:#dcd8ff}
+.dashboard-btn{
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:center;
+    margin-top:18px!important;
+    padding:11px 16px!important;
+    border-radius:11px!important;
+    background:linear-gradient(135deg,#5144e9,#6c5af7)!important;
+    color:#fff!important;
+    text-decoration:none!important;
+    font-size:13px!important;
+    font-weight:700!important;
+    border:0!important;
+    box-shadow:0 8px 18px rgba(91,77,246,.18);
+    transition:.2s ease!important;
+}
+.dashboard-btn:hover{
+    transform:translateY(-2px)!important;
+    box-shadow:0 13px 24px rgba(91,77,246,.25)!important;
+}
+.course-section-title{
+    margin:5px 0 12px!important;
+    padding:0 2px!important;
+    color:#69778e!important;
+    font-size:11px!important;
+    font-weight:800!important;
+    letter-spacing:.14em!important;
+}
+.course-section-title:not(:first-child){margin-top:27px!important}
+
+.empty-state,.error-state{
+    min-height:150px;
+    margin:0!important;
+    padding:35px!important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border:1px dashed #dfe5ef;
+    border-radius:16px;
+    color:#8a96a9!important;
+    background:#fafbfe;
+}
+.error-state{color:#b91c1c!important;background:#fff7f7}
+
+#progressContainer{padding:28px!important}
+.progress-row{
+    margin:0 0 16px!important;
+    padding:20px!important;
+    border:1px solid #e7ebf3!important;
+    border-radius:18px!important;
+    background:#fbfcff!important;
+}
+.progress-row-head{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:11px;
+    color:#334155!important;
+    font-size:14px;
+}
+.progress-row-head strong{color:#5144e9}
+.real-progress{
+    height:11px!important;
+    border-radius:999px!important;
+    background:#edf0f6!important;
+    overflow:hidden;
+}
+.real-progress>div{
+    height:100%;
+    background:linear-gradient(90deg,#5144e9,#8b7cff)!important;
+    border-radius:999px;
+}
+
+#gradesContainer{padding-top:25px!important}
+.grade-box{
+    min-height:92px;
+    display:flex!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+    gap:20px;
+}
+.grade-box>strong{
+    min-width:90px;
+    padding:13px!important;
+    border-radius:14px!important;
+    background:#eeebff!important;
+    color:#5144e9!important;
+    font-size:17px!important;
+}
+
+.settings-body{padding:28px!important}
+.settings-card{
+    padding:22px!important;
+    border:1px solid #e6eaf2!important;
+    border-radius:18px!important;
+    background:linear-gradient(180deg,#fbfcff,#f7f8fc)!important;
+}
+.settings-card p{color:#68768b}
+
+@media(max-width:1100px){
+    .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:800px){
+    body{overflow:auto}
+    .dashboard{display:block;height:auto}
+    .sidebar{
+        width:100%;min-width:0;height:auto;
+        position:relative;
+    }
+    .sidebar-bottom{margin-top:18px!important}
+    .main-content{
+        height:auto;overflow:visible;
+        padding:0 16px 35px;
+    }
+    .topbar{position:sticky}
+    .top-actions .profile div:last-child{display:none}
+    #overviewSection .welcome-card{
+        padding:28px!important;
+        min-height:210px;
+    }
+    #overviewSection .welcome-card h1{font-size:30px!important}
+    .welcome-icon{width:70px;height:70px;font-size:36px!important}
+}
+@media(max-width:560px){
+    .stats{grid-template-columns:1fr!important}
+    .data-grid{grid-template-columns:1fr!important}
+    .dashboard-section .panel-heading{padding:20px!important}
+    .dashboard-list,#gradesContainer{padding:18px!important}
+    #progressContainer{padding:18px!important}
+    .grade-box{align-items:flex-start!important;flex-direction:column}
+}
+</style>
+
+        <script>
+        (() => {
+            let courses = [];
+            let allAssignments = [];
+            let allMaterials = [];
+
+            const $ = (id) => document.getElementById(id);
+            const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+
+            async function getJson(url) {
+                const response = await fetch(url, { credentials: 'same-origin' });
+                if (!response.ok) throw new Error('Request failed: ' + response.status);
+                return await response.json();
+            }
+
+            async function loadCourses() {
+                const data = await getJson('/lms/my-courses');
+                return Array.isArray(data) ? data : (Array.isArray(data.courses) ? data.courses : []);
+            }
+
+            async function loadBrowseCourses() {
+                const data = await getJson('/lms/courses');
+                return Array.isArray(data) ? data : (Array.isArray(data.courses) ? data.courses : []);
+            }
+
+            function courseId(c) { return c.courseId ?? c.id ?? c.course_id; }
+            function courseTitle(c) { return c.title ?? c.courseTitle ?? 'Untitled Course'; }
+            function instructorName(c) { return c.instructorName ?? c.instructor ?? 'Instructor'; }
+            function assignmentId(a) { return a.assignmentId ?? a.id ?? a.assignment_id; }
+            function assignmentTitle(a) { return a.title ?? 'Untitled Assignment'; }
+            function dueDate(a) { return a.dueDate ?? a.due_date; }
+
+            function formatDate(value) {
+                if (!value) return 'No due date';
+                const d = new Date(value);
+                if (Number.isNaN(d.getTime())) return esc(value);
+                return d.toLocaleString([], {dateStyle:'medium', timeStyle:'short'});
+            }
+
+            function isPast(value) {
+                if (!value) return false;
+                const d = new Date(value);
+                return !Number.isNaN(d.getTime()) && d.getTime() < Date.now();
+            }
+
+            function renderBrowseCourses(list) {
+                const box = $('browseCoursesContainer');
+                if (!list.length) {
+                    box.innerHTML = '<p class="empty-state">No courses available.</p>';
+                    return;
+                }
+                box.innerHTML = '<div class="data-grid">' + list.map(c => `
+                    <div class="data-card course-card">
+                        <div class="card-kicker">COURSE</div>
+                        <h4>${esc(courseTitle(c))}</h4>
+                        <p>${esc(c.description || 'No course description available.')}</p>
+                        <div class="real-meta"><span class="real-badge">👨‍🏫 ${esc(instructorName(c))}</span></div>
+                        <a class="dashboard-btn" href="course-details.html?courseId=${encodeURIComponent(courseId(c))}">View Course <span>→</span></a>
+                    </div>`).join('') + '</div>';
+            }
+
+            function renderCourses() {
+                $('courseCount').textContent = courses.length;
+                const box = $('coursesContainer');
+                if (!courses.length) {
+                    box.innerHTML = '<p class="empty-state">No courses available.</p>';
+                    return;
+                }
+                box.innerHTML = '<div class="data-grid">' + courses.map(c => `
+                    <div class="data-card course-card">
+                        <div class="card-kicker">ENROLLED COURSE</div>
+                        <h4>${esc(courseTitle(c))}</h4>
+                        <p>${esc(c.description || 'No course description available.')}</p>
+                        <div class="real-meta"><span class="real-badge">👨‍🏫 ${esc(instructorName(c))}</span></div>
+                        <a class="dashboard-btn" href="course-details.html?courseId=${encodeURIComponent(courseId(c))}">Open Course <span>→</span></a>
+                    </div>`).join('') + '</div>';
+            }
+
+            async function loadMaterials() {
+                const box = $('materialsContainer');
+                if (!courses.length) { box.innerHTML='<p class="empty-state">No courses available, so there are no materials to show.</p>'; return; }
+                const groups = [];
+                for (const c of courses) {
+                    try {
+                        const data = await getJson('/lms/materials?courseId=' + encodeURIComponent(courseId(c)));
+                        const list = Array.isArray(data) ? data : (Array.isArray(data.materials) ? data.materials : []);
+                        if (list.length) groups.push({course:c, list});
+                    } catch(e) {}
+                }
+                allMaterials = groups.flatMap(g => g.list.map(m => ({...m, courseTitle:courseTitle(g.course)})));
+                if (!groups.length) { box.innerHTML='<p class="empty-state">No materials available.</p>'; return; }
+                box.innerHTML = groups.map(g => `<div class="course-section-title">${esc(courseTitle(g.course))}</div>` + g.list.map(m => `
+                    <div class="data-card">
+                        <h4>${esc(m.title || m.fileName || 'Material')}</h4>
+                        <p>${esc(m.description || 'No description available.')}</p>
+                        <div class="real-meta"><span class="real-badge">${esc(m.materialType || 'File')}</span><span class="real-badge">${esc(m.fileName || 'File')}</span></div>
+                        <a class="dashboard-btn" href="/lms/download-material?materialId=${encodeURIComponent(m.materialId)}">Download</a>
+                    </div>`).join('')).join('');
+            }
+
+            async function loadAssignments() {
+                const box = $('assignmentsContainer');
+                if (!courses.length) { box.innerHTML='<p class="empty-state">No courses available, so there are no assignments to show.</p>'; return; }
+                const groups=[];
+                for (const c of courses) {
+                    try {
+                        const data=await getJson('/lms/assignments?courseId='+encodeURIComponent(courseId(c)));
+                        const list=Array.isArray(data)?data:(Array.isArray(data.assignments)?data.assignments:[]);
+                        for(const a of list){
+                            try { a._submission=await getJson('/lms/my-submission?assignmentId='+encodeURIComponent(assignmentId(a))); } catch(e) { a._submission=null; }
+                            a._courseTitle=courseTitle(c);
+                            a._courseId=courseId(c);
+                            allAssignments.push(a);
+                        }
+                        if(list.length) groups.push({course:c,list});
+                    } catch(e) {}
+                }
+                const pending=allAssignments.filter(a=>!a._submission && !isPast(dueDate(a))).length;
+                const submitted=allAssignments.filter(a=>!!a._submission).length;
+                const graded=allAssignments.filter(a=>a._submission && a._submission.marks !== null && a._submission.marks !== undefined).length;
+                $('pendingCount').textContent=pending;
+                $('submittedCount').textContent=submitted;
+                $('gradedCount').textContent=graded;
+
+                if(!groups.length){box.innerHTML='<p class="empty-state">No assignments available.</p>'; return;}
+                box.innerHTML=groups.map(g=>`<div class="course-section-title">${esc(courseTitle(g.course))}</div>`+g.list.map(a=>{
+                    const sub=a._submission;
+                    const status=sub ? (sub.marks !== null && sub.marks !== undefined ? 'Graded' : 'Submitted') : (isPast(dueDate(a)) ? 'Closed' : 'Pending');
+                    const cls=status==='Graded'?'success':status==='Pending'?'warning':'info';
+return `<div class="data-card">
+
+    <h4>${esc(assignmentTitle(a))}</h4>
+
+    <p>
+        ${esc(a.description || 'No description available.')}
+    </p>
+
+    <div class="real-meta">
+
+        <span class="real-badge">
+            Due: ${formatDate(dueDate(a))}
+        </span>
+
+        <span class="real-badge">
+            Max marks: ${esc(a.maxMarks ?? '—')}
+        </span>
+
+        <span class="real-badge ${cls}">
+            ${status}
+        </span>
+
+    </div>
+
+    ${a.fileName ? `
+        <div class="real-meta">
+
+            <span class="real-badge info">
+                📄 ${esc(a.fileName)}
+            </span>
+
+        </div>
+
+        <a
+            class="dashboard-btn"
+            href="/lms/download-assignment?assignmentId=${encodeURIComponent(assignmentId(a))}"
+            target="_blank">
+
+            ⬇ Download Assignment
+
+        </a>
+    ` : ''}
+
+    ${
+        !sub && !isPast(dueDate(a))
+        ? `
+            <div class="submission-box">
+
+                <h4>📤 Submit Your Answer</h4>
+
+                <form
+                    class="submission-form"
+                    data-assignment-id="${assignmentId(a)}">
+
+                    <input
+                        type="file"
+                        name="file"
+                        accept=".pdf,.doc,.docx"
+                        required>
+
+                    <button
+                        type="submit"
+                        class="dashboard-btn">
+
+                        Submit Assignment
+
+                    </button>
+
+                </form>
+
+                <p class="submission-message"></p>
+
+            </div>
+        `
+        : ''
+    }
+
+    ${
+        sub
+        ? `
+            <div class="submission-box">
+
+                <h4>📤 Your Submission</h4>
+
+                <p>
+                    Status:
+                    <strong>
+                        ${
+                            sub.marks !== null &&
+                            sub.marks !== undefined
+                            ? '✅ Graded'
+                            : '✅ Submitted'
+                        }
+                    </strong>
+                </p>
+
+                ${
+                    sub.marks !== null &&
+                    sub.marks !== undefined
+                    ? `
+                        <p>
+                            Marks:
+                            <strong>
+                                ${esc(sub.marks)} / ${esc(a.maxMarks)}
+                            </strong>
+                        </p>
+
+                        <p>
+                            Feedback:
+                            ${esc(
+                                sub.feedback ||
+                                'No feedback provided.'
+                            )}
+                        </p>
+                    `
+                    : `
+                        <p>
+                            Your submission is waiting for grading.
+                        </p>
+                    `
+                }
+
+            </div>
+        `
+        : ''
+    }
+
+    <a
+        class="dashboard-btn"
+        href="course-details.html?courseId=${encodeURIComponent(a._courseId)}">
+
+        Open Course →
+
+    </a>
+
+</div>`;
+                }).join('')).join('');
+            }
+
+
+        // =========================
+// LOAD QUIZZES
+// =========================
+
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+async function loadQuizzes() {
+
+    const container = document.getElementById("quizzesContainer");
+
+    if (!container) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch("/lms/quiz-list");
+
+        if (!response.ok) {
+            throw new Error("Unable to load quizzes.");
+        }
+
+        const quizzes = await response.json();
+
+        if (!Array.isArray(quizzes) || quizzes.length === 0) {
+
+            container.innerHTML = `
+                <div class="empty-state">
+                    No quizzes available yet.
+                </div>
+            `;
+
+            return;
+        }
+
+        container.innerHTML = "";
+
+        quizzes.forEach(quiz => {
+
+            const card = document.createElement("div");
+
+            card.className = "quiz-card";
+
+card.innerHTML = `
+    <div class="quiz-card-info">
+        <div class="quiz-icon">🎯</div>
+
+        <div>
+            <h4>${quiz.title}</h4>
+            <p>${quiz.description || "No description available."}</p>
+            <span class="quiz-status">
+    ${quiz.attempted ? "✓ Completed" : "Available"}
+</span>
+        </div>
+    </div>
+
+${quiz.attempted
+    ? `<div style="text-align:center;">
+            <div style="font-weight:700; margin-bottom:8px;">
+                Score: ${quiz.score}/${quiz.totalMarks}
+            </div>
+
+            <button
+                class="quiz-start-button"
+                disabled>
+                ✓ Completed
+            </button>
+       </div>`
+    : `<button
+            class="quiz-start-button"
+            onclick="startQuiz(${quiz.quizId})">
+            🎯 Start Quiz
+       </button>`
+}
+`;
+
+            container.appendChild(card);
+
+        });
+
+    } catch (error) {
+
+        console.error("Quiz loading error:", error);
+
+        container.innerHTML = `
+            <div class="empty-state">
+                Unable to load quizzes.
+            </div>
+        `;
+    }
+}
+
+async function startQuiz(quizId) {
+
+    try {
+
+        const response = await fetch(
+            "/lms/quiz-questions?quizId=" + quizId
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                result.message || "Unable to load quiz."
+            );
+        }
+
+        const questions = result;
+
+        if (!Array.isArray(questions) || questions.length === 0) {
+            alert("This quiz has no questions yet.");
+            return;
+        }
+
+        let html = `
+            <div class="quiz-attempt-box">
+
+                <h2>🎯 Quiz</h2>
+
+                <form id="quizAttemptForm">
+        `;
+
+questions.forEach((q, index) => {
+
+    html += `
+        <div class="quiz-question">
+
+            <input
+                type="hidden"
+                name="questionId"
+                value="${q.questionId}"
+            >
+
+                    <h3>
+                        Question ${index + 1}. 
+                        ${escapeHtml(q.questionText)}
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                           name="answer_${q.questionId}"
+                            value="A"
+                            required
+                        >
+                        <span>
+                            <strong>A.</strong>
+                            ${escapeHtml(q.optionA)}
+                        </span>
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                           name="answer_${q.questionId}"
+                            value="B"
+                        >
+                        <span>
+                            <strong>B.</strong>
+                            ${escapeHtml(q.optionB)}
+                        </span>
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                           name="answer_${q.questionId}"
+                            value="C"
+                        >
+                        <span>
+                            <strong>C.</strong>
+                            ${escapeHtml(q.optionC)}
+                        </span>
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                           name="answer_${q.questionId}"
+                            value="D"
+                        >
+                        <span>
+                            <strong>D.</strong>
+                            ${escapeHtml(q.optionD)}
+                        </span>
+                    </label>
 
                 </div>
+            `;
+        });
+
+        html += `
+                    <button
+                        type="submit"
+                        class="action-button">
+                        Submit Quiz
+                    </button>
+
+                </form>
+
+            </div>
+        `;
+document.getElementById("quizzesContainer").innerHTML = html;
+const quizForm = document.getElementById("quizAttemptForm");
+quizForm.addEventListener("submit", async function(e) {
 
 
-                <div class="learning-course">
+        e.preventDefault();
 
-                    <div class="course-logo java-logo">
-                        ☕
-                    </div>
+        const form = e.target;
+        const formData = new FormData(form);
+formData.append("quizId", quizId);
 
-                    <div class="course-info">
+const submitData = new URLSearchParams(formData);
 
-                        <div class="course-title">
+        try {
 
-                            <div>
-                                <h4>Java Programming</h4>
-                                <p>Instructor: John</p>
-                            </div>
+            const response = await fetch(
+                "/lms/quiz-submit",
+                {
+                    method: "POST",
+                    body: submitData
+                }
+            );
 
-                            <strong>75%</strong>
+            const result = await response.json();
 
+            if (!response.ok) {
+
+                alert(
+                    result.message ||
+                    "Unable to submit quiz."
+                );
+
+                return;
+            }
+
+            document.getElementById(
+                "quizzesContainer"
+            ).innerHTML = `
+                <div class="quiz-attempt-box">
+
+                    <h2>🎉 Quiz Completed!</h2>
+
+                    <div style="
+                        text-align:center;
+                        padding:30px;
+                    ">
+
+                        <div style="
+                            font-size:50px;
+                            margin-bottom:15px;
+                        ">
+                            🏆
                         </div>
 
-                        <div class="progress">
-                            <div style="width: 75%;"></div>
+                        <h3>Your Score</h3>
+
+                        <div style="
+                            font-size:38px;
+                            font-weight:800;
+                            margin:15px 0;
+                        ">
+                            ${result.score}
                         </div>
 
-                        <button>
-                            Continue Learning →
+                        <p>
+                            Your quiz has been submitted successfully.
+                        </p>
+
+                        <button
+                            class="action-button"
+                            onclick="loadQuizzes()">
+                            Back to Quizzes
                         </button>
 
                     </div>
 
                 </div>
+            `;
 
+        } catch (error) {
 
-                <div class="learning-course">
+            console.error(
+                "Quiz submission error:",
+                error
+            );
 
-                    <div class="course-logo dbms-logo">
-                        🗄️
-                    </div>
+            alert(
+                "Server error while submitting quiz."
+            );
+        }
+    });
 
-                    <div class="course-info">
+    } catch (error) {
 
-                        <div class="course-title">
+        console.error("Quiz error:", error);
 
-                            <div>
-                                <h4>Database Management</h4>
-                                <p>Instructor: Alex</p>
+        alert(error.message || "Unable to open quiz.");
+    }
+}
+
+window.startQuiz = startQuiz;
+window.loadQuizzes = loadQuizzes;
+
+            document.addEventListener('submit', async function(e) {
+
+    if (!e.target.classList.contains('submission-form')) {
+        return;
+    }
+
+    e.preventDefault();
+
+    const form = e.target;
+    const assignmentId = form.dataset.assignmentId;
+    const fileInput = form.querySelector('input[type="file"]');
+    const message = form.querySelector('.submission-message');
+
+    if (!fileInput.files.length) {
+        message.textContent = 'Please select a file.';
+        return;
+    }
+
+    const formData = new FormData();
+
+    formData.append('assignmentId', assignmentId);
+    formData.append('file', fileInput.files[0]);
+
+    try {
+
+        message.textContent = 'Uploading...';
+
+        const response = await fetch(
+            '/lms/submit-assignment',
+            {
+                method: 'POST',
+                body: formData
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                result.message || 'Submission failed.'
+            );
+        }
+
+        message.textContent =
+            '✅ Assignment submitted successfully!';
+
+        form.reset();
+
+        await loadAssignments();
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+            '❌ ' + error.message;
+    }
+
+});
+
+            function renderProgressAndGrades() {
+                const total=allAssignments.length;
+                const submitted=allAssignments.filter(a=>a._submission).length;
+                const graded=allAssignments.filter(a=>a._submission && a._submission.marks !== null && a._submission.marks !== undefined).length;
+                const submissionPct=total?Math.round(submitted/total*100):0;
+                const gradingPct=total?Math.round(graded/total*100):0;
+                $('progressContainer').innerHTML=total?`
+                    <div class="progress-row"><div class="progress-row-head"><span>Assignments Submitted</span><strong>${submissionPct}%</strong></div><div class="real-progress"><div style="width:${submissionPct}%"></div></div></div>
+                    <div class="progress-row"><div class="progress-row-head"><span>Assignments Graded</span><strong>${gradingPct}%</strong></div><div class="real-progress"><div style="width:${gradingPct}%"></div></div></div>`:'<p class="empty-state">No assignment data available to calculate progress.</p>';
+
+                const gradedList=allAssignments.filter(a=>a._submission && a._submission.marks !== null && a._submission.marks !== undefined);
+                $('gradesContainer').innerHTML=gradedList.length?gradedList.map(a=>`<div class="data-card grade-box"><div><h4>${esc(assignmentTitle(a))}</h4><p>${esc(a._courseTitle)}</p><p>${esc(a._submission.feedback || 'No feedback provided.')}</p></div><strong>${esc(a._submission.marks)} / ${esc(a.maxMarks ?? '—')}</strong></div>`).join(''):'<p class="empty-state">No graded assignments yet.</p>';
+            }
+
+            function renderOverview() {
+                const courseBox = $('overviewCourses');
+                const deadlineBox = $('overviewDeadlines');
+
+                if (!courses.length) {
+                    courseBox.innerHTML = '<div class="overview-loading">No enrolled courses available.</div>';
+                } else {
+                    courseBox.innerHTML = courses.slice(0, 4).map(c => `
+                        <div class="overview-course-item">
+                            <div class="overview-course-icon">📚</div>
+                            <div class="overview-course-main">
+                                <h4>${esc(courseTitle(c))}</h4>
+                                <p>Instructor: ${esc(instructorName(c))}</p>
                             </div>
-
-                            <strong>55%</strong>
-
-                        </div>
-
-                        <div class="progress">
-                            <div style="width: 55%;"></div>
-                        </div>
-
-                        <button>
-                            Continue Learning →
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- DEADLINES -->
-
-            <div class="panel">
-
-                <div class="panel-heading">
-
-                    <div>
-                        <span class="section-label">
-                            UPCOMING
-                        </span>
-
-                        <h3>Deadlines</h3>
-                    </div>
-
-                </div>
-
-
-                <div class="deadline">
-
-                    <div class="date">
-                        <strong>18</strong>
-                        <span>SEP</span>
-                    </div>
-
-                    <div>
-                        <h4>Java OOP Assignment</h4>
-                        <p>Java Programming</p>
-                    </div>
-
-                    <span class="urgent">
-                        2 days
-                    </span>
-
-                </div>
-
-
-                <div class="deadline">
-
-                    <div class="date">
-                        <strong>21</strong>
-                        <span>SEP</span>
-                    </div>
-
-                    <div>
-                        <h4>SQL Queries</h4>
-                        <p>Database Management</p>
-                    </div>
-
-                    <span class="normal">
-                        5 days
-                    </span>
-
-                </div>
-
-
-                <div class="deadline">
-
-                    <div class="date">
-                        <strong>25</strong>
-                        <span>SEP</span>
-                    </div>
-
-                    <div>
-                        <h4>Web Development Quiz</h4>
-                        <p>Web Development</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- BOTTOM -->
-
-        <section class="bottom-grid">
-
-
-            <!-- RECENT ASSIGNMENTS -->
-
-            <div class="panel">
-
-                <div class="panel-heading">
-
-                    <div>
-                        <span class="section-label">
-                            ASSIGNMENTS
-                        </span>
-
-                        <h3>Recent Assignments</h3>
-                    </div>
-
-                    <a href="#">
-                        View All →
-                    </a>
-
-                </div>
-
-
-                <div class="assignment-table">
-
-                    <div class="table-header">
-                        <span>Assignment</span>
-                        <span>Course</span>
-                        <span>Status</span>
-                    </div>
-
-
-                    <div class="table-row">
-
-                        <div>
-                            <strong>Java OOP</strong>
-                            <small>Submitted Sep 15</small>
-                        </div>
-
-                        <span>Java</span>
-
-                        <span class="status submitted">
-                            Submitted
-                        </span>
-
-                    </div>
-
-
-                    <div class="table-row">
-
-                        <div>
-                            <strong>SQL Queries</strong>
-                            <small>Due Sep 21</small>
-                        </div>
-
-                        <span>DBMS</span>
-
-                        <span class="status pending">
-                            Pending
-                        </span>
-
-                    </div>
-
-
-                    <div class="table-row">
-
-                        <div>
-                            <strong>HTML Project</strong>
-                            <small>Submitted Sep 12</small>
-                        </div>
-
-                        <span>Web</span>
-
-                        <span class="status graded">
-                            Graded
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PROGRESS -->
-
-            <div class="panel progress-panel">
-
-                <div class="panel-heading">
-
-                    <div>
-                        <span class="section-label">
-                            PERFORMANCE
-                        </span>
-
-                        <h3>My Progress</h3>
-                    </div>
-
-                </div>
-
-
-                <div class="circle-progress">
-
-                    <div class="circle">
-                        <strong>72%</strong>
-                        <span>Overall</span>
-                    </div>
-
-                </div>
-
-
-                <div class="progress-item">
-
-                    <span>Java Programming</span>
-
-                    <strong>75%</strong>
-
-                </div>
-
-                <div class="mini-progress">
-                    <div style="width: 75%;"></div>
-                </div>
-
-
-                <div class="progress-item">
-
-                    <span>Database Management</span>
-
-                    <strong>55%</strong>
-
-                </div>
-
-                <div class="mini-progress">
-                    <div style="width: 55%;"></div>
-                </div>
-
-
-                <div class="progress-item">
-
-                    <span>Web Development</span>
-
-                    <strong>85%</strong>
-
-                </div>
-
-                <div class="mini-progress">
-                    <div style="width: 85%;"></div>
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
+                            <a class="overview-course-action" href="course-details.html?courseId=${encodeURIComponent(courseId(c))}">Open →</a>
+                        </div>`).join('');
+                }
+
+                const upcoming = allAssignments
+                    .filter(a => !a._submission && !isPast(dueDate(a)))
+                    .sort((a,b) => new Date(dueDate(a) || 8640000000000000) - new Date(dueDate(b) || 8640000000000000))
+                    .slice(0, 4);
+
+                if (!upcoming.length) {
+                    deadlineBox.innerHTML = '<div class="overview-loading">No upcoming deadlines.</div>';
+                } else {
+                    deadlineBox.innerHTML = upcoming.map(a => {
+                        const d = new Date(dueDate(a));
+                        const day = Number.isNaN(d.getTime()) ? '—' : d.getDate();
+                        const month = Number.isNaN(d.getTime()) ? '' : d.toLocaleString([], {month:'short'}).toUpperCase();
+                        return `<div class="deadline-item">
+                            <div class="deadline-date"><strong>${day}</strong><span>${month}</span></div>
+                            <div class="deadline-main"><h4>${esc(assignmentTitle(a))}</h4><p>${esc(a._courseTitle || 'Course')} · Due ${formatDate(dueDate(a))}</p></div>
+                            <span class="deadline-status">Pending</span>
+                        </div>`;
+                    }).join('');
+                }
+            }
+
+            function showSection(id) {
+                document.querySelectorAll('.dashboard-section').forEach(section => section.classList.remove('active-section'));
+                const target = document.getElementById(id) || document.getElementById('overviewSection');
+                target.classList.add('active-section');
+
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector('.nav-link[href="#' + target.id + '"]');
+                if (activeLink) activeLink.classList.add('active');
+
+                const title = target.dataset.title || (target.id === 'overviewSection' ? 'Overview' : 'Student Dashboard');
+                const topTitle = document.getElementById('pageTitle');
+                if (topTitle) topTitle.textContent = title;
+
+                const main = document.querySelector('.main-content');
+                if (main) main.scrollTo({top:0, behavior:'smooth'});
+                else window.scrollTo({top:0, behavior:'smooth'});
+            }
+
+            function setupNavigation() {
+                document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+                    link.addEventListener('click', e => {
+                        e.preventDefault();
+                        const id = link.getAttribute('href').substring(1);
+                        showSection(id);
+                        history.replaceState(null, '', '#' + id);
+                    });
+                });
+
+                const initial = location.hash ? location.hash.substring(1) : 'overviewSection';
+                showSection(initial);
+            }
+
+            async function init() {
+                setupNavigation();
+                try {
+                    const data=await loadCourses();
+                    courses=data;
+                    renderCourses();
+                    const browseDataPromise = loadBrowseCourses();
+                    await Promise.all([
+    loadMaterials(),
+    loadAssignments(),
+    loadQuizzes()
+]);
+                    renderProgressAndGrades();
+                    renderOverview();
+                    try {
+                        renderBrowseCourses(await browseDataPromise);
+                    } catch (e) {
+                        $('browseCoursesContainer').innerHTML = '<p class="error-state">Unable to load courses.</p>';
+                    }
+                    const name=sessionStorage.getItem('userName') || 'Student';
+                    const first=(name.trim()[0]||'S').toUpperCase();
+                    document.querySelectorAll('.student-mini .avatar, .profile .avatar.small').forEach(x=>x.textContent=first);
+                    document.querySelectorAll('.student-mini strong, .profile strong').forEach(x=>x.textContent=name);
+                    $('welcomeText').textContent='Welcome, '+name+' 👋';
+                    $('settingsUser').textContent='Signed in as '+name+'.';
+                } catch(e) {
+                    $('coursesContainer').innerHTML='<p class="error-state">Unable to load dashboard data. Please login again or check the server.</p>';
+                    $('materialsContainer').innerHTML='<p class="error-state">Unable to load materials.</p>';
+                    $('assignmentsContainer').innerHTML='<p class="error-state">Unable to load assignments.</p>';
+                    $('progressContainer').innerHTML='<p class="error-state">Unable to calculate progress.</p>';
+                    $('gradesContainer').innerHTML='<p class="error-state">Unable to load grades.</p>';
+                    $('browseCoursesContainer').innerHTML='<p class="error-state">Unable to load courses.</p>';
+                }
+            }
+            init();
+        })();
+        </script>
+</main>
 
 </div>
 
 </body>
+
 </html>

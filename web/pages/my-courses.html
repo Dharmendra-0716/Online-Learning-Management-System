@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Courses - LearnHub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 270px;
+            background: #111827;
+            color: white;
+            padding: 30px 20px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .profile {
+            background: #1f2937;
+            padding: 18px;
+            border-radius: 14px;
+            margin-bottom: 30px;
+        }
+
+        .profile-name {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .profile-role {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        .nav a {
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: 0.2s;
+        }
+
+        .nav a:hover {
+            background: #1f2937;
+            color: white;
+        }
+
+        .nav .active {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .logout {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            right: 20px;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 270px;
+            width: calc(100% - 270px);
+            padding: 45px;
+        }
+
+        .top-title {
+            color: #6366f1;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 8px;
+            margin-bottom: 30px;
+        }
+
+        /* COURSE GRID */
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .course-icon {
+            width: 55px;
+            height: 55px;
+            background: #eef2ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .course-card h2 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .instructor {
+            color: #6366f1;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .syllabus {
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 18px;
+        }
+
+        .syllabus-title {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .syllabus-text {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .continue-btn {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 9px;
+            background: #4f46e5;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .continue-btn:hover {
+            background: #4338ca;
+        }
+
+        /* EMPTY STATE */
+
+        .empty {
+            background: white;
+            padding: 60px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .empty-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .empty h2 {
+            margin-bottom: 10px;
+        }
+
+        .empty p {
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .browse-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #4f46e5;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        /* LOADING */
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #6b7280;
+            font-size: 17px;
+        }
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 220px;
+            }
+
+            .main {
+                margin-left: 220px;
+                width: calc(100% - 220px);
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            Learn<span>Hub</span>
+        </div>
+
+        <div class="profile">
+            <div class="profile-name" id="studentName">Student</div>
+            <div class="profile-role">Student</div>
+        </div>
+
+        <nav class="nav">
+
+            <a href="student-dashboard.html">
+                🏠 &nbsp; Overview
+            </a>
+
+            <a href="my-courses.html" class="active">
+                📚 &nbsp; My Courses
+            </a>
+
+            <a href="browse-courses.html">
+                🔍 &nbsp; Browse Courses
+            </a>
+
+            <a href="#">
+                📄 &nbsp; Materials
+            </a>
+
+            <a href="#">
+                📝 &nbsp; Assignments
+            </a>
+
+            <a href="#">
+                📊 &nbsp; My Progress
+            </a>
+
+            <a href="#">
+                🎯 &nbsp; Grades & Feedback
+            </a>
+
+        </nav>
+
+        <div class="logout">
+
+            <a href="../logout"
+               style="color:#d1d5db;text-decoration:none;">
+                ↪ &nbsp; Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+        <div class="top-title">
+            Learning
+        </div>
+
+        <h1>My Courses</h1>
+
+        <div id="courseContainer">
+
+            <div class="loading">
+                Loading your courses...
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+async function loadMyCourses() {
+
+    const container = document.getElementById("courseContainer");
+
+    try {
+
+        const response = await fetch("../my-courses");
+
+        const courses = await response.json();
+
+        if (!response.ok) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    <div class="empty-icon">⚠️</div>
+                    <h2>Unable to load courses</h2>
+                    <p>${courses.message || "Something went wrong."}</p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        if (courses.length === 0) {
+
+            container.innerHTML = `
+                <div class="empty">
+
+                    <div class="empty-icon">
+                        📚
+                    </div>
+
+                    <h2>No Courses Yet</h2>
+
+                    <p>
+                        You haven't enrolled in any course yet.
+                    </p>
+
+                    <a href="browse-courses.html"
+                       class="browse-btn">
+                        Browse Courses
+                    </a>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        let html = '<div class="course-grid">';
+
+
+        courses.forEach(course => {
+
+            html += `
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        📘
+                    </div>
+
+                    <h2>
+                        ${escapeHtml(course.title)}
+                    </h2>
+
+                    <div class="instructor">
+                        Instructor:
+                        ${escapeHtml(course.instructorName)}
+                    </div>
+
+                    <div class="description">
+                        ${escapeHtml(course.description)}
+                    </div>
+
+                    <div class="syllabus">
+
+                        <div class="syllabus-title">
+                            Syllabus
+                        </div>
+
+                        <div class="syllabus-text">
+                            ${escapeHtml(course.syllabus)}
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="continue-btn"
+                        onclick="openCourse(${course.courseId})">
+
+                        Continue Learning →
+
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+
+        html += '</div>';
+
+        container.innerHTML = html;
+
+    } catch (error) {
+
+        console.error("My Courses Error:", error);
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    ⚠️
+                </div>
+
+                <h2>Server Error</h2>
+
+                <p>
+                    Unable to connect to the server.
+                </p>
+
+            </div>
+
+        `;
+    }
+}
+
+
+function openCourse(courseId) {
+    window.location.href = "course-details.html?courseId=" + courseId;
+}
+
+
+function escapeHtml(value) {
+
+    if (value == null) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+loadMyCourses();
+
+</script>
+
+</body>
+
+</html>

@@ -10,7 +10,7 @@
 
     <title>Login - LearnHub LMS</title>
 
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="/lms/css/login.css">
 
 </head>
 
@@ -18,48 +18,52 @@
 
 <div class="login-container">
 
-    <!-- LEFT SIDE -->
+    <!-- ================= LEFT SIDE ================= -->
 
     <div class="login-left">
 
+        <!-- BRAND -->
         <div class="brand">
             Learn<span>Hub</span>
         </div>
 
+
+        <!-- WELCOME -->
         <div class="welcome">
 
-            <p class="small-title">
-                WELCOME BACK
-            </p>
+            <div class="small-title">
+                LEARNING MANAGEMENT SYSTEM
+            </div>
 
             <h1>
-                Continue your<br>
-                <span>learning journey.</span>
+                Welcome <span>Back!</span> 👋
             </h1>
 
             <p>
-                Login to access your courses,
-                assignments, learning materials
-                and progress.
+                Login to continue your learning journey
+                and access your courses, materials and
+                progress.
             </p>
 
         </div>
 
+
+        <!-- FEATURES -->
         <div class="login-features">
 
             <div>
                 <span>✓</span>
-                Access your courses
+                Learn Anytime, Anywhere
             </div>
 
             <div>
                 <span>✓</span>
-                Track your progress
+                Track Your Learning Progress
             </div>
 
             <div>
                 <span>✓</span>
-                Manage assignments
+                Access Courses & Materials
             </div>
 
         </div>
@@ -67,112 +71,46 @@
     </div>
 
 
-    <!-- RIGHT SIDE -->
+    <!-- ================= RIGHT SIDE ================= -->
 
     <div class="login-right">
 
         <div class="login-box">
 
+
+            <!-- LOGIN HEADING -->
+
             <div class="login-heading">
 
-                <h2>
-                    Welcome Back 👋
-                </h2>
+                <h2>Login</h2>
 
                 <p>
-                    Login to your LearnHub account
+                    Enter your credentials to access your account
                 </p>
 
             </div>
 
 
-            <form id="loginForm">
+            <!-- LOGIN FORM -->
 
-                <!-- ROLE -->
-
-                <div class="role-selection">
-
-                    <label>
-                        Login As
-                    </label>
-
-                    <div class="role-options">
-
-                        <label class="role-card">
-
-                            <input
-                                type="radio"
-                                name="role"
-                                value="STUDENT"
-                                checked
-                            >
-
-                            <span class="role-icon">
-                                🎓
-                            </span>
-
-                            <span class="role-name">
-                                Student
-                            </span>
-
-                        </label>
-
-
-                        <label class="role-card">
-
-                            <input
-                                type="radio"
-                                name="role"
-                                value="INSTRUCTOR"
-                            >
-
-                            <span class="role-icon">
-                                👨‍🏫
-                            </span>
-
-                            <span class="role-name">
-                                Instructor
-                            </span>
-
-                        </label>
-
-
-                        <label class="role-card">
-
-                            <input
-                                type="radio"
-                                name="role"
-                                value="ADMIN"
-                            >
-
-                            <span class="role-icon">
-                                🛡️
-                            </span>
-
-                            <span class="role-name">
-                                Admin
-                            </span>
-
-                        </label>
-
-                    </div>
-
-                </div>
+            <form id="loginForm" action="/lms/login" method="POST">
 
 
                 <!-- EMAIL -->
 
                 <div class="input-group">
 
-                    <label>
+                    <label for="email">
                         Email Address
                     </label>
 
                     <input
                         type="email"
                         id="email"
+                        name="email"
                         placeholder="Enter your email"
                         required
+                        autocomplete="email"
                     >
 
                 </div>
@@ -184,11 +122,11 @@
 
                     <div class="password-label">
 
-                        <label>
+                        <label for="password">
                             Password
                         </label>
 
-                        <a href="#">
+                        <a href="#" onclick="return false;">
                             Forgot Password?
                         </a>
 
@@ -197,20 +135,25 @@
                     <input
                         type="password"
                         id="password"
+                        name="password"
                         placeholder="Enter your password"
                         required
+                        autocomplete="current-password"
                     >
 
                 </div>
 
 
-                <!-- REMEMBER -->
+                <!-- REMEMBER ME -->
 
                 <div class="remember">
 
                     <label>
 
-                        <input type="checkbox">
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
 
                         Remember me
 
@@ -219,80 +162,48 @@
                 </div>
 
 
-                <!-- LOGIN -->
+                <!-- LOGIN BUTTON -->
 
                 <button
                     type="submit"
                     class="login-submit"
+                    id="loginBtn"
                 >
-                    Login →
+                    Login
                 </button>
 
             </form>
 
 
+            <!-- DIVIDER -->
+
             <div class="divider">
-                <span>or</span>
+                <span>OR</span>
             </div>
 
 
-            <!-- DEMO ACCOUNTS -->
+            <!-- REGISTER -->
 
-            <p class="demo-text">
-                Demo Accounts
-            </p>
+            <div class="register-link">
 
-            <div class="demo-accounts">
+                Don't have an account?
 
-                <div class="demo">
-
-                    <strong>
-                        Admin
-                    </strong>
-
-                    <span>
-                        admin@lms.com
-                    </span>
-
-                </div>
-
-
-                <div class="demo">
-
-                    <strong>
-                        Instructor
-                    </strong>
-
-                    <span>
-                        john@lms.com
-                    </span>
-
-                </div>
-
-
-                <div class="demo">
-
-                    <strong>
-                        Student
-                    </strong>
-
-                    <span>
-                        dhoni@lms.com
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <p class="back-home">
-
-                ←
-                <a href="index.html">
-                    Back to Home
+                <a href="register.html">
+                    Create Account
                 </a>
 
-            </p>
+            </div>
+
+
+            <!-- BACK HOME -->
+
+            <div class="back-home">
+
+                <a href="index.html">
+                    ← Back to Home
+                </a>
+
+            </div>
 
         </div>
 
@@ -301,7 +212,9 @@
 </div>
 
 
-<script src="js/script.js"></script>
+<!-- LOGIN JAVASCRIPT -->
+
+<script src="/lms/js/script.js"></script>
 
 </body>
 

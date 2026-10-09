@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Browse Courses - LearnHub</title>
+
+    <link rel="stylesheet"
+          href="../css/dashboard.css">
+
+    <style>
+
+        .courses-page {
+            padding: 30px;
+        }
+
+        .courses-header {
+            margin-bottom: 30px;
+        }
+
+        .courses-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .courses-header p {
+            color: #64748b;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fill, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 14px;
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+
+            border: 1px solid #e5e7eb;
+
+            transition: 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.10);
+        }
+
+        .course-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+
+            background: #eef2ff;
+
+            margin-bottom: 18px;
+        }
+
+        .course-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .course-description {
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            min-height: 65px;
+
+            margin-bottom: 15px;
+        }
+
+        .instructor {
+            font-size: 13px;
+
+            color: #475569;
+
+            margin-bottom: 15px;
+        }
+
+        .syllabus {
+            background: #f8fafc;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            color: #64748b;
+
+            margin-bottom: 18px;
+
+            line-height: 1.5;
+        }
+
+        .enroll-btn {
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .enroll-btn:hover {
+            background: #4338ca;
+        }
+
+        .enroll-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+        }
+
+        .no-courses {
+            text-align: center;
+            padding: 50px;
+            color: #64748b;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            Learn<span>Hub</span>
+        </div>
+
+
+        <div class="student-mini">
+
+            <div class="avatar">
+                D
+            </div>
+
+            <div>
+
+                <strong>
+                    Student
+                </strong>
+
+                <small>
+                    Student
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <nav class="side-nav">
+
+            <a href="student-dashboard.html">
+                <span>▦</span>
+                Overview
+            </a>
+
+            <a href="#">
+                <span>📚</span>
+                My Courses
+            </a>
+
+            <a href="browse-courses.html"
+               class="active">
+
+                <span>🔍</span>
+                Browse Courses
+
+            </a>
+
+            <a href="#">
+                <span>📄</span>
+                Materials
+            </a>
+
+            <a href="#">
+                <span>📝</span>
+                Assignments
+            </a>
+
+            <a href="#">
+                <span>📈</span>
+                My Progress
+            </a>
+
+            <a href="#">
+                <span>🎯</span>
+                Grades & Feedback
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="#">
+                <span>⚙️</span>
+                Settings
+            </a>
+
+            <a href="../logout"
+               class="logout">
+
+                <span>↪</span>
+                Logout
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    STUDENT DASHBOARD
+                </p>
+
+                <h2>
+                    Browse Courses
+                </h2>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="avatar small">
+                        D
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Student
+                        </strong>
+
+                        <small>
+                            Student
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= COURSES ================= -->
+
+        <section class="courses-page">
+
+
+            <div class="courses-header">
+
+                <h1>
+                    Explore Courses 📚
+                </h1>
+
+                <p>
+                    Discover courses and start learning today.
+                </p>
+
+            </div>
+
+
+            <div
+                id="coursesContainer"
+                class="courses-grid">
+
+                <div class="loading">
+                    Loading courses...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script>
+
+    // =========================================
+    // LOAD COURSES
+    // =========================================
+
+    async function loadCourses() {
+
+        const container =
+            document.getElementById("coursesContainer");
+
+        try {
+
+            const response =
+                await fetch("../courses");
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Failed to load courses"
+                );
+            }
+
+
+            const courses =
+                await response.json();
+
+
+            container.innerHTML = "";
+
+
+            if (courses.length === 0) {
+
+                container.innerHTML = `
+                    <div class="no-courses">
+
+                        <h3>
+                            No courses available
+                        </h3>
+
+                        <p>
+                            New courses will appear here.
+                        </p>
+
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            courses.forEach(course => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "course-card";
+
+
+                card.innerHTML = `
+
+                    <div class="course-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        ${escapeHtml(course.title)}
+                    </h3>
+
+                    <p class="course-description">
+                        ${escapeHtml(course.description)}
+                    </p>
+
+                    <div class="instructor">
+
+                        👨‍🏫 Instructor:
+
+                        <strong>
+                            ${escapeHtml(course.instructorName)}
+                        </strong>
+
+                    </div>
+
+                    <div class="syllabus">
+
+                        <strong>
+                            Syllabus:
+                        </strong>
+
+                        <br>
+
+                        ${escapeHtml(course.syllabus)}
+
+                    </div>
+
+                    <button
+                        class="enroll-btn"
+                        onclick="enrollCourse(${course.courseId}, this)">
+
+                        Enroll Now
+
+                    </button>
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Course loading error:",
+                error
+            );
+
+
+            container.innerHTML = `
+
+                <div class="no-courses">
+
+                    <h3>
+                        Unable to load courses
+                    </h3>
+
+                    <p>
+                        Please try again later.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    // =========================================
+    // ENROLL COURSE
+    // =========================================
+
+    async function enrollCourse(courseId, button) {
+
+        if (!courseId) {
+
+            alert("Invalid course.");
+
+            return;
+        }
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Enrolling...";
+
+
+        try {
+
+            const response =
+                await fetch("../enroll", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/x-www-form-urlencoded"
+                    },
+
+                    body:
+                        new URLSearchParams({
+                            courseId: courseId
+                        })
+
+                });
+
+
+            const result =
+                await response.json();
+
+
+            if (response.ok) {
+
+                alert(
+                    "✅ " + result.message
+                );
+
+                button.textContent =
+                    "Enrolled ✓";
+
+                button.disabled = true;
+
+            } else {
+
+                alert(
+                    "⚠️ " + result.message
+                );
+
+                button.disabled = false;
+
+                button.textContent =
+                    "Enroll Now";
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Enrollment error:",
+                error
+            );
+
+
+            alert(
+                "Unable to connect to the server."
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "Enroll Now";
+        }
+
+    }
+
+
+    // =========================================
+    // ESCAPE HTML
+    // =========================================
+
+    function escapeHtml(value) {
+
+        if (
+            value === null ||
+            value === undefined
+        ) {
+
+            return "";
+
+        }
+
+
+        return String(value)
+
+            .replace(/&/g, "&amp;")
+
+            .replace(/</g, "&lt;")
+
+            .replace(/>/g, "&gt;")
+
+            .replace(/"/g, "&quot;")
+
+            .replace(/'/g, "&#039;");
+    }
+
+
+    // =========================================
+    // START
+    // =========================================
+
+    loadCourses();
+
+</script>
+
+
+</body>
+
+</html>

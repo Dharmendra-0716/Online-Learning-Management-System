@@ -254,6 +254,19 @@ body {
     background: #e5e7eb;
 }
 
+.register-link {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin: -12px 0 24px;
+}
+
+.register-link a {
+    color: #4f46e5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 /* DEMO */
 
 .demo-text {
